@@ -1,0 +1,16 @@
+// Place all the styles related to the Sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.checkbox {
+  span {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}
+
+#session_remember_me {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  top: 2px;
+}
