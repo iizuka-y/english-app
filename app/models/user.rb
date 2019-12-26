@@ -37,4 +37,9 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  # user_idの投稿を取得
+  def feed
+    Post.where("user_id = ?", id)
+  end
+
 end

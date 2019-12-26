@@ -1,5 +1,95 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
+
+<main>
+  <div class="main-container">
+
+    <!--レイアウト左側-->
+    <div class="left-container">
+
+      <!--ユーザー情報部分-->
+      <div id="profile-container-up">
+        <div id="user-name">
+          <%= gravatar_for @user %>
+          <p><%= @user.name %></p>
+        </div>
+        <div id="user-info">
+          <% if current_user?(@user) %>
+            <%= link_to "編集", edit_user_path(current_user) %>
+          <% end %>
+          <p>作成した例文・・・84　　獲得★数・・・52</p>
+        </div>
+      </div>
+
+      <!--自己紹介部分-->
+      <div id="profile-container-bottom">
+        <p>最近英語の勉強を頑張っています。よろしくおねがいします。</p>
+      </div>
+
+
+      <!--投稿部分-->
+      <!--カテゴリー-->
+      <div class="post-category">
+        <p>投稿した例文</p>
+        <%= link_to "評価した例文", "#" %>
+      </div>
+
+      <!--投稿コンテナ-->
+      <div class="posts-container">
+        <!--投稿コンテナ上部-->
+        <div class="posts-container-top">
+          <!--名前と画像部分-->
+          <div class="posts-user-name">
+            <%= gravatar_for @user %>
+            <%= link_to @user.name, user_path(@user) %>
+          </div>
+
+          <!--キーワード部分-->
+          <div class="posts-keyword">
+            <a>seem to</a>
+          </div>
+        </div>
+
+        <!--投稿コンテナ中部-->
+        <div class="posts-container-middle">
+          <%= image_tag '/img2.jpg' %>
+          <p>The girl I watch every day seems to be on the stalker.<br>
+            (僕が毎日見守っている女の子がストーカーにあっているらしい)</p>
+        </div>
+        <div class="posts-information">
+          <p>「seem to」は「～らしい」という意味</p>
+        </div>
+        <div class="posts-time">
+          <p>1時間前</p>
+        </div>
+
+        <!--投稿コンテナ下部-->
+        <div class="posts-container-bottom">
+          <div class="star-box">
+            <%= image_tag "star0.png", alt: "star0", class: "star" %>
+            <%= image_tag "star0.png", alt: "star0", class: "star" %>
+            <%= image_tag "star0.png", alt: "star0", class: "star" %>
+          </div>
+          <div class="star-count">
+            <p>★21</p>
+          </div>
+          <div class="comment-box">
+            <%= image_tag "hukidasi.png", alt: "吹き出し" %>
+            <p>コメント</p>
+          </div>
+          <div class="reibun-box">
+            <a>例文帳に登録</a>
+          </div>
+
+
+        </div>
+
+
+      </div>
+    </div>
+    <div class="right-container">
+    </div>
+
+  </div>
+
+
+</main>

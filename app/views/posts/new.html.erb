@@ -1,0 +1,25 @@
+<main class="full-screen">
+  <div class="form">
+    <h2>新規例文作成</h2>
+    <div class="form-box">
+      <div>
+        <%= form_for (@post) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+          <%= f.label :keyword, "単語、構文" %>
+          <%= f.text_field :keyword, placeholder: "何の単語、構文で英作文するかを記述　例)have to", class: 'form-control' %>
+
+          <%= f.label :content, "内容" %>
+          <%= f.text_area :content, class: 'form-control form-content' %>
+
+          <%= f.label :information, "補足" %>
+          <%= f.text_area :information, placeholder: "補足があれば書きましょう", class: 'form-control form-information' %>
+
+          <%= f.submit "投稿" %>
+        <% end %>
+      </div>
+
+
+  　</div>
+
+  </div>
+</main>

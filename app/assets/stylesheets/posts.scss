@@ -1,3 +1,23 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.form textarea {
+    width: 100%;
+    border: 1px solid #d8dadf;
+    padding: 5px;
+    color: #57575f;
+    font-size: 16px;
+    letter-spacing: 2px; /*文字間*/
+    border-radius: 5px;
+    margin-bottom: 35px;
+    background-color: #E6E6E6;
+}
+
+
+.form-content {
+  height: 150px;
+}
+
+.form-information {
+  height: 80px;
+}

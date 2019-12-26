@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       redirect_to @user #redirect_to user_url(id: @user.id)
       flash[:success] = "面白英作文へようこそ！"
     else

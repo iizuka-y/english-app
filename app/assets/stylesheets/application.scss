@@ -66,6 +66,7 @@ header {
 
 .header_logo h1{
     line-height: 60px;
+		margin-left: 20px;
 }
 
 
@@ -81,7 +82,7 @@ header {
 .header_nav li {
     display: inline-block;/*block要素のように高さや縦方向のpadding、marginが指定できる上に、inline要素のように横並びができ、しかも高さが異なるボックスがあってもレイアウトが崩れない。*/
     font-size: 16px;
-    margin: auto 10px;
+    margin-right: 20px;
 }
 
 .header_nav li a{
@@ -112,18 +113,17 @@ footer {
 
 .form {
     width: 700px;
-}
+		h2 {
+			text-align: center;
+	    margin-bottom: 10px;
+		}
 
-.form h2 {
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.form p {
-    text-align: center;
-    position: relative;
-    top: 10px;
-		font-size: 14px;
+		p {
+			text-align: center;
+	    position: relative;
+	    top: 10px;
+			font-size: 14px;
+		}
 }
 
 .form a:hover {
@@ -196,4 +196,146 @@ footer {
 
 .alert-danger {
 	background-color: #F4D0D6;
+}
+
+
+/*L字型レイアウト用*/
+.main-container {
+	width: 1000px;
+	margin: 0 auto;
+	padding-top: 60px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.left-container {
+	width: 620px;
+	padding-top: 15px;
+	margin: 0 20px;
+	border: 1px solid #d8dadf;
+}
+
+.right-container {
+	width: 300px;
+	margin: 0 20px;
+	border: 1px solid #d8dadf;
+}
+
+
+/*投稿のレイアウト*/
+.post-category {
+	p {
+		display: inline-block;
+		padding: 0 20px;
+		color: #F7931E;
+		border-bottom: solid 2px #F7931E;
+	}
+
+	a {
+		color: #999999;
+		padding: 0 20px;
+	}
+}
+
+.posts-container {
+	padding: 15px;
+	border-top: solid 1px #999999;
+	border-bottom: solid 1px #999999;
+}
+
+.posts-container-top {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.posts-user-name {
+  display: inline-block;
+	a {
+		font-weight: 600;
+    margin-left: 10px;
+    color: black;
+	}
+
+	img {
+		width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
+    詳しくはhttps://html5experts.jp/takazudo/13592*/
+    object-fit: cover; /*トリミング*/
+	}
+}
+
+
+.posts-keyword {
+	display: inline-block;
+	a {
+		line-height: 50px;
+		padding: 0 20px;
+		background-color: #F4E921;
+		font-weight: 600;
+		border-radius: 5px;
+	}
+}
+
+.posts-container-middle {
+	margin-bottom: 20px;
+	font-weight: 600;
+	text-align: center;
+	img {
+		max-width: 500px;
+		margin-bottom: 10px;
+	}
+
+	p {
+		font-size: 17px;
+		text-align: start;
+	}
+}
+
+.posts-information {
+	font-size: 14px;
+	padding-bottom: 10px;
+}
+
+.posts-time {
+	text-align: right;
+	font-size: 14px;
+}
+
+
+.posts-container-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.star-box {
+		.star {
+			width: 50px;
+		}
+	}
+
+	.star-count {
+		display: inline-block;
+		p {
+			font-weight: 600;
+			background-color: #F4E921;
+			border-radius: 5px;
+			padding: 0 20px;
+		}
+
+	}
+
+	.comment-box {
+		display: flex;
+		align-items: center;
+		p {
+			display: inline-block;
+		}
+		img {
+			width: 20px;
+		}
+	}
 }

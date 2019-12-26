@@ -21,3 +21,51 @@
     border: 3px solid red;
   }
 }
+
+/*プロフィール部分*/
+#profile-container-up {
+  width: 100%;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#user-name {
+  img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
+    詳しくはhttps://html5experts.jp/takazudo/13592*/
+    object-fit: cover; /*トリミング*/
+  }
+
+  p {
+    display: inline-block;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+
+}
+
+#user-info {
+  position: relative;
+  a {
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    background-color: #F7931E;
+    color: white;
+    padding: 0 20px;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+  p {
+    padding-top: 40px;
+  }
+}
+
+#profile-container-bottom {
+  padding: 20px 15px 40px 15px;
+}
