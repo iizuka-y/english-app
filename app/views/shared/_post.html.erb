@@ -1,0 +1,52 @@
+<% @posts.each do|post| %>
+<div class="posts-container">
+  <!--投稿コンテナ上部-->
+  <div class="posts-container-top">
+    <!--名前と画像部分-->
+    <div class="posts-user-name">
+      <%= link_to gravatar_for(post.user), post.user %>
+      <%= link_to post.user.name, user_path(post.user) %>
+    </div>
+
+    <!--キーワード部分-->
+    <div class="posts-keyword">
+      <%= link_to post.keyword, "#" %>
+    </div>
+  </div>
+
+  <!--投稿コンテナ中部-->
+  <div class="posts-container-middle">
+    <%= image_tag '/img2.jpg' %>
+    <%= simple_format(h(post.content),{},sanitize: false) %>
+  </div>
+  <div class="posts-information">
+    <%= simple_format(h(post.information),{},sanitize: false) %>
+  </div>
+  <div class="posts-time">
+    <p><%= time_ago_in_words(post.created_at) %></p> <!--time_ago_in_wordsメソッドを使用すると何分前と表示できる-->
+  </div>
+
+  <!--投稿コンテナ下部-->
+  <div class="posts-container-bottom">
+    <div class="star-box">
+      <%= image_tag "star0.png", alt: "star0", class: "star" %>
+      <%= image_tag "star0.png", alt: "star0", class: "star" %>
+      <%= image_tag "star0.png", alt: "star0", class: "star" %>
+    </div>
+    <div class="star-count">
+      <p>★21</p>
+    </div>
+    <div class="comment-box">
+      <%= image_tag "hukidasi.png", alt: "吹き出し" %>
+      <p>コメント</p>
+    </div>
+    <div class="reibun-box">
+      <a>例文帳に登録</a>
+    </div>
+
+
+  </div>
+
+
+</div>
+<% end %>
