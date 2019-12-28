@@ -10,7 +10,7 @@
       <% if current_user?(post.user) %>
         <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
         <%= link_to "編集", edit_post_path(post), class: "edit" %>
-        <%= link_to "投稿へ移動", post %>
+        <%= link_to "投稿へ移動", post, class: "show-post" %>
         <%= link_to "投稿者をミュート", "#", class: "mute" %>
       <% end %>
     </div>
@@ -21,7 +21,8 @@
 
 <script>
   //モーダルを表示
-  $('#post-option-<%= post.id %>').on('click',function() {
+  $('#post-option-<%= post.id %>').click(function() {
+    //alert('モーダルを表示');
     scrollPosition = $(window).scrollTop();
     $('#post-modal-<%= post.id %>').fadeIn();
     $('body').css('position','fixed')
@@ -32,7 +33,7 @@
   });
 
   //モーダルを非表示
-  $('.close-modal').click(function() {
+  $('.close-modal, .edit, .show-post').click(function() {
     $('#post-modal-<%= post.id %>').fadeOut();
     $('body').attr( { style: '' } );
     window.scrollTo( 0 , scrollPosition );

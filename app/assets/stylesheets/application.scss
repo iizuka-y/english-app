@@ -213,6 +213,7 @@ footer {
 	padding-top: 15px;
 	margin: 0 20px;
 	border: 1px solid #d8dadf;
+	box-shadow: 0 0 4px gray;
 }
 
 .right-container {
@@ -321,7 +322,14 @@ footer {
 		.star {
 			width: 50px;
 		}
+
+		.star:hover {
+			position: relative;
+			top: -3px;
+		}
 	}
+
+
 
 	.star-count {
 		display: inline-block;

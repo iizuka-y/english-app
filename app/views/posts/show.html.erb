@@ -1,0 +1,40 @@
+<% provide(:title, "Post-show") %>
+<main>
+  <div class="main-container">
+
+    <!--レイアウト左側-->
+    <div class="left-container">
+
+      <!--投稿部分-->
+      <!--カテゴリー-->
+      <div class="post-category">
+        <%= link_to "人気の例文", "#" %>
+        <%= link_to "新着例文", "#" %>
+      </div>
+
+      <!--投稿コンテナ-->
+
+      <div class="posts">
+        <ol>
+          <%= render @posts %>
+        </ol>
+      </div>
+
+      <!--コメント投稿部分-->
+
+      <!--コメント表示部分-->
+
+    </div>
+
+    <!--レイアウト右側-->
+    <div class="right-container">
+    </div>
+
+  </div>
+
+
+</main>
+<footer>
+  <div>
+  </div>
+</footer>
