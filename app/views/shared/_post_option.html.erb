@@ -1,0 +1,41 @@
+<div class="post-option" id="post-option-<%= post.id %>">
+  ・・・
+</div>
+<div class="post-modal-wrapper" id="post-modal-<%= post.id %>">
+  <div class="modal">
+    <div class="close-modal">
+      <i class="fa fa-times">×</i>
+    </div>
+    <div class="modal-btn">
+      <% if current_user?(post.user) %>
+        <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
+        <%= link_to "編集", edit_post_path(post), class: "edit" %>
+        <%= link_to "投稿へ移動", post %>
+        <%= link_to "投稿者をミュート", "#", class: "mute" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  //モーダルを表示
+  $('#post-option-<%= post.id %>').on('click',function() {
+    scrollPosition = $(window).scrollTop();
+    $('#post-modal-<%= post.id %>').fadeIn();
+    $('body').css('position','fixed')
+             .css('width','100%')
+             .css('height','100%')
+             .css('left','0')
+             .css({'top': -scrollPosition});
+  });
+
+  //モーダルを非表示
+  $('.close-modal').click(function() {
+    $('#post-modal-<%= post.id %>').fadeOut();
+    $('body').attr( { style: '' } );
+    window.scrollTo( 0 , scrollPosition );
+  });
+
+</script>
