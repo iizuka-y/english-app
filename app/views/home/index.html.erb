@@ -15,7 +15,11 @@
 
         <!--投稿コンテナ-->
         <% if @posts.any? %>
-          <%= render 'shared/post' %>
+          <div class="posts">
+            <ol>
+              <%= render @posts %>
+            </ol>
+          </div>
         <% end %>
 
       </div>

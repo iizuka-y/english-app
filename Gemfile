@@ -59,6 +59,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rename'
 gem 'bootstrap-sass'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'jquery-rails', '4.3.1'
 
 
 group :production do
