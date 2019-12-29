@@ -3,13 +3,11 @@
 one:
   keyword: MyString
   content: MyText
-  information: MyString
-  text: MyString
+  information: MyText
   user: one
 
 two:
   keyword: MyString
   content: MyText
-  information: MyString
-  text: MyString
+  information: MyText
   user: two
