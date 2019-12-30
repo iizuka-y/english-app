@@ -29,13 +29,15 @@
 
     <!--投稿コンテナ下部-->
     <div class="posts-container-bottom">
-      <div class="star-box">
-        <%= image_tag "star0.png", alt: "star0", class: "star" %>
-        <%= image_tag "star0.png", alt: "star0", class: "star" %>
-        <%= image_tag "star0.png", alt: "star0", class: "star" %>
-      </div>
+      <%= render 'shared/star', post: post %>
       <div class="star-count">
-        <p>★21</p>
+        <p>
+          <% i = 0 %>
+          <% post.evaluations.each do |evaluation| %>
+            <% i += evaluation.star_count %>
+          <% end %>
+          ★<%= i %>
+        </p>
       </div>
       <div class="comment-box">
         <%= image_tag "hukidasi.png", alt: "吹き出し" %>

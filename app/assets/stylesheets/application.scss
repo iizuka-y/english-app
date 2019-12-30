@@ -319,6 +319,10 @@ footer {
 	align-items: center;
 
 	.star-box {
+		form {
+			display: inline-block;
+		}
+
 		.star {
 			width: 50px;
 		}
