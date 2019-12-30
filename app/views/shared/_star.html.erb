@@ -1,65 +1,7 @@
-<div class="star-box">
-  <!--ログインユーザーが投稿を評価している場合-->
-  <% if post.evaluated_by?(current_user) %>
-    <% case %>
-    <% when post_star(current_user, post) == 1 then %>
-      <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-       html: { method: :delete }, remote: true) do |f| %>
-        <%= image_submit_tag "star1.png", class: "star" %>
-      <% end %>
-      <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-       html: { method: :delete }, remote: true) do |f| %>
-        <%= image_submit_tag "star0.png", class: "star" %>
-      <% end %>
-      <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-       html: { method: :delete }, remote: true) do |f| %>
-        <%= image_submit_tag "star0.png", class: "star" %>
-      <% end %>
-
-    <% when post_star(current_user, post) == 2 then %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star1.png", class: "star" %>
-    <% end %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star1.png", class: "star" %>
-    <% end %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star0.png", class: "star" %>
-    <% end %>
-
-    <% when post_star(current_user, post) == 3 then %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star1.png", class: "star" %>
-    <% end %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star1.png", class: "star" %>
-    <% end %>
-    <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-     html: { method: :delete }, remote: true) do |f| %>
-      <%= image_submit_tag "star1.png", class: "star" %>
-    <% end %>
-    <% end %>
-  <% else %>
-  <!--ログインユーザーが投稿を評価してない場合-->
-    <%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
-      <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
-      <div><%= hidden_field_tag :star_count, 1 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
-      <%= image_submit_tag "star0.png", class: "star" %>
-    <% end %>
-    <%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
-      <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
-      <div><%= hidden_field_tag :star_count, 2 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
-      <%= image_submit_tag "star0.png", class: "star" %>
-    <% end %>
-    <%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
-      <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
-      <div><%= hidden_field_tag :star_count, 3 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
-      <%= image_submit_tag "star0.png", class: "star" %>
-    <% end %>
-  <% end %>
-</div>
+<!--ログインユーザーが投稿を評価している場合-->
+<% if post.evaluated_by?(current_user) %>
+  <%= render 'posts/evaluate', post: post %>
+<% else %>
+<!--ログインユーザーが投稿を評価してない場合-->
+  <%= render 'posts/not_evaluate', post: post %>
+<% end %>

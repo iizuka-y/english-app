@@ -2,5 +2,5 @@
 <% @post.evaluations.each do |evaluation| %>
   <% i += evaluation.star_count %>
 <% end %>
-$('#star-box-<%= @post.id %>').html("<%= j(render partial: 'posts/evaluate', locals:{post: @post}) %>");
+$('#star-box-<%= @post.id %>').html("<%= j(render partial: 'posts/not_evaluate', locals: {post: @post}) %>");
 $('#star-count-<%= @post.id %>').html("<p>★<%= i %></p>");

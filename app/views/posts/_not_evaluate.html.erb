@@ -1,0 +1,15 @@
+<%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
+  <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
+  <div><%= hidden_field_tag :star_count, 1 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
+  <%= image_submit_tag "star0.png", class: "star" %>
+<% end %>
+<%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
+  <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
+  <div><%= hidden_field_tag :star_count, 2 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
+  <%= image_submit_tag "star0.png", class: "star" %>
+<% end %>
+<%= form_for current_user.evaluations.build, url: post_evaluations_path(post.id), html: { method: :post }, remote: true do |f| %>
+  <div><%= hidden_field_tag :post_id, post.id %></div> <!--post_idをコントローラーに送信するためにhiddenで隠し持つ-->
+  <div><%= hidden_field_tag :star_count, 3 %></div> <!--star_countをコントローラーに送信するためにhiddenで隠し持つ-->
+  <%= image_submit_tag "star0.png", class: "star" %>
+<% end %>

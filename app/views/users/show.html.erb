@@ -16,7 +16,7 @@
           <% if current_user?(@user) %>
             <%= link_to "編集", edit_user_path(current_user) %>
           <% end %>
-          <p>作成した例文・・・84　　獲得★数・・・52</p>
+          <p>作成した例文・・・<%= @user.posts.count %>　　獲得★数・・・<%= sum_stars(@posts) %></p>
         </div>
       </div>
 
