@@ -1,11 +1,5 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  user_id: 1
-  post_id: 1
-  star_count: 1
-
-two:
-  user_id: 1
-  post_id: 1
-  star_count: 1
+評価1:
+  user: マイケル
+  post: 投稿2
+  star_count: 2
