@@ -13,11 +13,83 @@
     background-color: #E6E6E6;
 }
 
-
 .form-content {
   height: 150px;
 }
 
 .form-information {
   height: 80px;
+}
+
+/*コメント用レイアウト*/
+#comment-form  {
+  padding: 20px 15px;
+  textarea {
+    width: 100%;
+    border: 1px solid #d8dadf;
+    padding: 5px;
+    color: #57575f;
+    font-size: 16px;
+    letter-spacing: 2px; /*文字間*/
+    border-radius: 10px;
+    background-color: #E6E6E6;
+    height: 80px;
+  }
+
+  input[type="submit"] {
+    background-color: #F4E921;
+    cursor: pointer;
+    width: 120px;
+    border-radius: 2px;
+    margin-bottom: 0;
+    border: 0px solid #d8dadf;
+    color: black;
+    font-weight: 600;
+    display: block;
+    margin: 10px 0 0 auto;
+  }
+}
+
+.comment-container {
+  padding: 15px;
+  border-top: solid 1px #999999;
+	border-bottom: solid 1px #999999;
+}
+
+.comment-top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-user-name {
+  display: inline-block;
+	a {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+	}
+
+	img {
+		width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
+    詳しくはhttps://html5experts.jp/takazudo/13592*/
+    object-fit: cover; /*トリミング*/
+	}
+}
+
+.comment-delete input[type="submit"] {
+    background-color: #FFFFFF;
+    cursor: pointer;
+    font-weight: 300;
+    border-radius: 2px;
+    border: 0px solid #d8dadf;
+    color: #57575f;
+}
+
+.comment-content {
+  padding: 0 15px;
+  margin-left: 25px;
 }

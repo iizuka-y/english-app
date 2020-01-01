@@ -10,9 +10,9 @@
       <% if current_user?(post.user) %>
         <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
         <%= link_to "編集", edit_post_path(post), class: "edit" %>
-        <%= link_to "投稿へ移動", post, class: "show-post" %>
-        <%= link_to "投稿者をミュート", "#", class: "mute" %>
       <% end %>
+      <%= link_to "投稿へ移動", post, class: "show-post" %>
+      <%= link_to "投稿者をミュート", "#", class: "mute" %>
     </div>
   </div>
 </div>

@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :evaluations, dependent: :destroy
-  
+  has_many :comments, dependent: :destroy
+
   attr_accessor :remember_token
   before_save { self.email = email.downcase } #DB保存前に文字を全て小文字にする
   validates :name,  presence: true, length: { maximum: 20 }

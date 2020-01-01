@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
   def show
-    @posts = Post.find(params[:id])
+    @post = Post.find(params[:id])
+    @comment = current_user.comments.build
   end
 
   def new

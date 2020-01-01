@@ -8,3 +8,10 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+
+      post:
+        keyword: 単語、構文
+        content: 例文
+
+      comment:
+        content: コメント

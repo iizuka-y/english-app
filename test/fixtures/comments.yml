@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+コメント1:
+  user: 太郎
+  post: 投稿1
+  content: コメントだよ

@@ -16,14 +16,62 @@
 
       <div class="posts">
         <ol>
-          <%= render @posts %>
+          <%= render @post %>
         </ol>
       </div>
 
       <!--コメント投稿部分-->
+      <div id="comment-form">
+        <%= form_for [@post, @comment] do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <div><%= f.hidden_field :post_id, :value => @post.id %></div>
+
+          <%= f.text_area :content, placeholder: "コメントを投稿できます", class: 'form-control' %>
+
+          <%= f.submit "送信" %>
+        <% end %>
+      </div>
 
       <!--コメント表示部分-->
+      <% if @post.comments.any? %>
+      <div id="comment-posts">
+        <ol>
+          <% @post.comments.each do |comment| %>
+          <li>
+            <div class="comment-container">
 
+              <div class="comment-top">
+
+                <div class="comment-user-name">
+                  <%= link_to gravatar_for(comment.user), comment.user %>
+                  <%= link_to comment.user.name, user_path(comment.user) %>
+                </div>
+
+                <div class="comment-delete">
+                  <% if current_user?(comment.user) %>
+                    <%= form_for current_user.comments.find_by(id: comment.id, post_id: @post.id),
+                     url: post_comments_path(@post.id), html: { method: :delete } do |f| %>
+                      <div><%= f.hidden_field :id, :value => comment.id %></div>
+                      <div><%= f.hidden_field :post_id, :value => @post.id %></div>
+                      <%= f.submit "削除", data: { confirm: "削除してもよろしいですか？" } %>
+                    <% end %>
+                  <% end %>
+                </div>
+
+              </div>
+
+
+              <div class="comment-content">
+                <%= comment.content %>
+              </div>
+
+            </div>
+          </li>
+          <% end %>
+        </ol>
+      </div>
+      <% end %>
     </div>
 
     <!--レイアウト右側-->

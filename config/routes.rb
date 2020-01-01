@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+  get 'comments/destroy'
   get 'evaluations/create'
   get 'evaluations/destroy'
   root 'home#index'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy] do
     resource :evaluations, only: [:create, :destroy]
+    resource :comments, only: [:create, :destroy]
   end
 
 
