@@ -1,7 +1,18 @@
 class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :evaluations, dependent: :destroy
+  has_many :evaluate_posts, through: :evaluations, source: :post
   has_many :comments, dependent: :destroy
+
+  # ====================自分がミュートしているユーザーとの関連 ===================================
+  has_many :active_mutes, class_name: "Mute", foreign_key: :muting_id, dependent: :destroy
+  has_many :muting_users, through: :active_mutes, source: :muted
+  # ==========================================================================================
+
+  # ====================自分をミュートしているユーザーとの関連 ===================================
+  has_many :passive_mutes, class_name: "Mute", foreign_key: :muted_id, dependent: :destroy
+  has_many :muted_users, through: :passive_mutes, source: :muting
+  # ==========================================================================================
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase } #DB保存前に文字を全て小文字にする
@@ -43,6 +54,11 @@ class User < ApplicationRecord
   # user_idの投稿を取得
   def feed
     Post.where("user_id = ?", id)
+  end
+
+  # userを自分がミュートしているかどうかを取得
+  def mutes?(user)
+    active_mutes.find_by(muted_id: user.id).present?
   end
 
 end

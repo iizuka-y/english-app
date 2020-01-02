@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_090444) do
+ActiveRecord::Schema.define(version: 2020_01_02_070147) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 2019_12_31_090444) do
     t.index ["post_id"], name: "index_evaluations_on_post_id"
     t.index ["user_id", "post_id"], name: "index_evaluations_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_evaluations_on_user_id"
+  end
+
+  create_table "mutes", force: :cascade do |t|
+    t.integer "muting_id"
+    t.integer "muted_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["muted_id"], name: "index_mutes_on_muted_id"
+    t.index ["muting_id", "muted_id"], name: "index_mutes_on_muting_id_and_muted_id", unique: true
+    t.index ["muting_id"], name: "index_mutes_on_muting_id"
   end
 
   create_table "posts", force: :cascade do |t|

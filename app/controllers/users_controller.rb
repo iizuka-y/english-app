@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :evaluated]
   before_action :correct_user,   only: [:edit, :update]
 
   def show
      @user = User.find(params[:id])
      @posts = @user.posts
+     @post_category = 0
   end
 
   def new
@@ -34,6 +35,13 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def evaluated
+    @user = User.find(params[:id])
+    @posts = @user.evaluate_posts
+    @post_category = 1
+    render 'show'
   end
 
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'mutes/create'
+  get 'mutes/destroy'
   get 'comments/create'
   get 'comments/destroy'
   get 'evaluations/create'
@@ -13,7 +15,13 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    resource :mutes, only: [:create, :destroy]
+    member do
+      get :evaluated
+    end
+  end
+
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy] do
     resource :evaluations, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]

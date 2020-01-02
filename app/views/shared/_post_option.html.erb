@@ -12,7 +12,15 @@
         <%= link_to "編集", edit_post_path(post), class: "edit" %>
       <% end %>
       <%= link_to "投稿へ移動", post, class: "show-post" %>
-      <%= link_to "投稿者をミュート", "#", class: "mute" %>
+      <% if !current_user?(post.user) %>
+        <% if current_user.mutes?(post.user) %>
+          <%= link_to "ミュート済み", user_mutes_path(post.user.id), method: :delete,
+          class: "mute" %>
+        <% else %>
+          <%= link_to "投稿者をミュート", user_mutes_path(post.user.id), method: :post,
+          data: { confirm: "#{post.user.name}さんをミュートしてもよろしいですか？" }, class: "mute" %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>
