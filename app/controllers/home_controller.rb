@@ -7,4 +7,13 @@ class HomeController < ApplicationController
       # ↑誰もミュートしていないときに@postsがnilになる
     end
   end
+
+  def create # notificationテーブルのreadの中身をtrueにする
+    Notification.where("user_id = #{current_user.id}").update_all "read = 'true'"
+    redirect_to notification_url
+  end
+
+  def notification
+    @notifications = Notification.where("user_id = '#{current_user.id}'")
+  end
 end

@@ -1,0 +1,20 @@
+<li>
+  <div class="notifications-container">
+    <!--お知らせコンテナ上部-->
+    <div class="notifications-container-top">
+      <%= link_to gravatar_for(notification.notified_by), notification.notified_by.name %>
+      <% if notification.notified_type == "評価" %>
+        <%= "#{notification.notified_by.name}さんがあなたの例文を評価しました" %>
+      <% else %>
+        <%= "#{notification.notified_by.name}さんがあなたの例文にコメントをしました"  %>
+      <% end %>
+    </div>
+    <div class="notification-container-bottom">
+      <% if notification.notified_type == "評価" %>
+        <%= notification.post.content  %>
+      <% else %>
+        <%= notification.comment.content %>
+      <% end %>
+    </div>
+  </div>
+</li>

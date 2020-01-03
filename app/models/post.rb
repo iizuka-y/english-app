@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :evaluations, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :notifications ,dependent: :destroy
 
   default_scope -> { order(created_at: :desc) } # 新しい投稿順に取得する
   mount_uploader :image, ImageUploader

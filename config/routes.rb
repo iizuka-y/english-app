@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
-  get 'mutes/create'
-  get 'mutes/destroy'
-  get 'comments/create'
-  get 'comments/destroy'
-  get 'evaluations/create'
-  get 'evaluations/destroy'
   root 'home#index'
+  get  '/notification',  to: 'home#notification'
+  post '/notification',  to: 'home#create'
 
   get 'sessions/new'
   get  '/signup',  to: 'users#new'

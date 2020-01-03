@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :evaluations, dependent: :destroy
   has_many :evaluate_posts, through: :evaluations, source: :post
   has_many :comments, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   # ====================自分がミュートしているユーザーとの関連 ===================================
   has_many :active_mutes, class_name: "Mute", foreign_key: :muting_id, dependent: :destroy

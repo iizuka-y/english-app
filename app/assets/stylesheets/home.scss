@@ -55,3 +55,28 @@ main {
     background-color: #F7931E;
     border-radius: 20px;
 }
+
+
+/*お知らせのレイアウト*/
+.notifications-container {
+	padding: 15px;
+	border-top: solid 1px #999999;
+}
+
+.notifications-container-top {
+	img {
+		display: block;
+		width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
+    詳しくはhttps://html5experts.jp/takazudo/13592*/
+    object-fit: cover; /*トリミング*/
+	}
+}
+
+.notification-container-bottom {
+	padding-top: 10px;
+	color: #999999;
+}

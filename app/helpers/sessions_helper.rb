@@ -60,4 +60,14 @@ module SessionsHelper
     session[:forwarding_url] = request.original_url if request.get?
   end
 
+  # 新着通知の数をカウント
+  def notification_count(user)
+    count = Notification.where("user_id = ? AND read = ?", user.id, false).count
+    if count == 0
+      return
+    else
+      return "(#{count})"
+    end
+  end
+
 end

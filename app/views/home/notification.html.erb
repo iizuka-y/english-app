@@ -1,0 +1,28 @@
+<main>
+  <div class="main-container">
+
+    <!--レイアウト左側-->
+    <div class="left-container">
+
+      <!--お知らせ部分-->
+      <h2>お知らせ</h2>
+
+      <!--投稿コンテナ-->
+      <% if @notifications.any? %>
+        <div class="posts">
+          <ol>
+            <%= render @notifications %>
+          </ol>
+        </div>
+      <% else %>
+        <p>まだお知らせはありません</p>
+      <% end %>
+
+    </div>
+    <div class="right-container">
+    </div>
+
+  </div>
+
+
+</main>

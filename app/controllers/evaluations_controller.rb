@@ -1,5 +1,6 @@
 class EvaluationsController < ApplicationController
   before_action :logged_in_user
+  after_action :create_notifications, only: [:create]
 
   def create
     @post = Post.find(params[:post_id])
@@ -24,5 +25,16 @@ class EvaluationsController < ApplicationController
     end
 
   end
+
+  private
+    def create_notifications
+      return if @post.user_id == current_user.id # 自分の投稿を評価したときはリターン
+      Notification.create(user_id: @post.user_id,
+                          notified_by_id: current_user.id,
+                          post_id: @post.id,
+                          notified_type: "評価",
+                          read: false,
+                          evaluation_id: @evaluation.id)
+    end
 
 end
