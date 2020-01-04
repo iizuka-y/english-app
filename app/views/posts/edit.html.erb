@@ -1,9 +1,9 @@
 <main class="full-screen">
-  <div class="form">
-    <h2>例文の編集</h2>
-    <div class="form-box">
-      <div>
-        <%= form_for (@post) do |f| %>
+  <div class="post-form">
+    <h2>投稿編集</h2>
+    <%= form_for (@post) do |f| %>
+      <div class="form-box">
+        <div id="form-box-left">
           <%= render 'shared/error_messages', object: f.object %>
           <%= f.label :keyword, "単語、構文" %>
           <%= f.text_field :keyword, placeholder: "何の単語、構文で英作文するかを記述　例)have to", class: 'form-control' %>
@@ -13,25 +13,34 @@
 
           <%= f.label :information, "補足" %>
           <%= f.text_area :information, placeholder: "補足があれば書きましょう", class: 'form-control form-information' %>
+        </div>
+        <div id="form-box-right">
+          <div class="field-image">
+            <%= f.label "画像をアップロード" %>
+            <div id="img-field" onClick="$('#file').click()">
+              <% if @post.image.url.present? %>
+                <%= image_tag(@post.image.url) %>
+              <% else %>
+                <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
+              <% end %>
+            </div>
+            <%= f.hidden_field :image_cache %>
+            <%= f.file_field :image, accept: 'image/jpeg,image/git,image/png', class: "image", style: "display:none;", id: "file" %>
 
-          <%= f.label "画像をアップロード" %>
-          <%= f.file_field :image, accept: 'image/jpeg,image/git,image/png' %>
-
-          <%= f.submit "更新" %>
-        <% end %>
-
-        <script type="text/javascript">
-          $('#micropost_picture').bind('change', function() {
-            var size_in_megabytes = this.files[0].size/1024/1024;
-            if (size_in_megabytes > 5) {
-              alert('5MB以上の画像は投稿できません');
-            }
-          });
-        </script>
+          </div>
+        </div>
       </div>
-
-
-  　</div>
-
+        <%= f.submit "更新" %>
+      <% end %>
+  　
   </div>
 </main>
+
+<script type="text/javascript">
+  $('#micropost_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('5MB以上の画像は投稿できません');
+    }
+  });
+</script>
