@@ -27,9 +27,7 @@
           <%= f.submit "変更を送信" %>
         <% end %>
       </div>
-
-
   　</div>
-
+    <%= link_to "このアカウントを消去", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
   </div>
 </main>

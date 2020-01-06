@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :evaluated]
-  before_action :correct_user,   only: [:edit, :update]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :evaluated]
+  before_action :correct_user,   only: [:edit, :update, :destroy]
+  before_action :ranking_user, only: [:show]
+  after_action :edit_star_count, only: [:destroy]
 
   def show
      @user = User.find(params[:id])
@@ -37,6 +39,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @delete_user = User.find(params[:id])
+    @users = []
+    @delete_user.evaluations.each do |evaluation|
+      @users << evaluation.post.user
+    end
+    @delete_user.destroy
+    flash[:success] = "ユーザーアカウントを削除しました"
+    redirect_to root_url
+  end
+
   def evaluated
     @user = User.find(params[:id])
     @posts = @user.evaluate_posts
@@ -51,14 +64,24 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
+    # beforeアクション
+    # 正しいユーザーかどうか確認
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_url) unless current_user?(@user)
+    end
 
+    def ranking_user
+      @ranking_users = User.limit(10).order('star_count DESC')
+    end
 
-  # beforeアクション
-
-  # 正しいユーザーかどうか確認
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
+    # afterアクション
+    # ユーザー削除後に星獲得数を更新
+    def edit_star_count
+      @users.each do |user|
+        user.star_count = sum_stars(user.posts)
+        user.save
+      end
+    end
 
 end

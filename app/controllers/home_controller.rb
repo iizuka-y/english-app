@@ -1,4 +1,7 @@
 class HomeController < ApplicationController
+  before_action :logged_in_user, only: [:create, :notification]
+  before_action :ranking_user, only: [:index, :notification]
+
   def index
     if logged_in?
       mute_ids = "SELECT muted_id FROM mutes WHERE muting_id = #{current_user.id}"
@@ -16,4 +19,10 @@ class HomeController < ApplicationController
   def notification
     @notifications = Notification.where("user_id = '#{current_user.id}'")
   end
+
+  # beforeアクション
+  def ranking_user
+    @ranking_users = User.limit(10).order('star_count DESC')
+  end
+
 end

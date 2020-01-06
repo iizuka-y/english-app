@@ -2,7 +2,7 @@
   <div class="post-form">
     <h2>新規例文作成</h2>
     <%= form_for (@post) do |f| %>
-      <div class="form-box">
+      <div class="post-form-box">
         <div id="form-box-left">
           <%= render 'shared/error_messages', object: f.object %>
           <%= f.label :keyword, "単語、構文" %>
@@ -30,8 +30,8 @@
           </div>
         </div>
       </div>
-        <%= f.submit "投稿" %>
-      <% end %>
+      <%= f.submit "投稿" %>
+    <% end %>
   　
   </div>
 </main>
