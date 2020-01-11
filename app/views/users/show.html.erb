@@ -24,7 +24,7 @@
 
       <!--自己紹介部分-->
       <div id="profile-container-bottom">
-        <p>最近英語の勉強を頑張っています。よろしくおねがいします。</p>
+        <%= @user.self_introduction %>
       </div>
 
 
@@ -43,8 +43,9 @@
       <!--投稿コンテナ-->
       <% if @posts.any? %>
         <div class="posts">
-          <ol>
+          <ol class="post-list jscroll">
             <%= render @posts %>
+            <%= paginate @posts %>
           </ol>
         </div>
       <% end %>

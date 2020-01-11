@@ -34,10 +34,10 @@
       </div>
 
       <!--コメント表示部分-->
-      <% if @post.comments.any? %>
+      <% if @comments.any? %>
       <div id="comment-posts">
-        <ol>
-          <% @post.comments.each do |comment| %>
+        <ol class="post-list jscroll">
+          <% @comments.each do |comment| %>
           <li>
             <div class="comment-container">
 
@@ -69,6 +69,7 @@
             </div>
           </li>
           <% end %>
+          <%= paginate @comments %>
         </ol>
       </div>
       <% end %>

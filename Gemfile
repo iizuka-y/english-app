@@ -68,6 +68,7 @@ gem 'bootstrap-sass'
 gem 'rails-i18n'
 gem 'carrierwave'
 gem 'jquery-rails', '4.3.1'
+gem 'kaminari'
 
 
 group :production do

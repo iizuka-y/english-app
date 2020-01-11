@@ -14,6 +14,7 @@
 //= require jquery
 //= require bootstrap
 //= require activestorage
+//= require jquery.jscroll.min.js
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
@@ -39,6 +40,13 @@ $(document).on('turbolinks:load', function(){
         }));
       };
     })(file);
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); // 画像の読み込み
+  });
+
+  //無限スクロール
+  $('.jscroll').jscroll({
+    loadingHtml: '<img src="/assets/loading.gif" alt="Loading" class="loading"/> ',
+    contentSelector: '.post-list',
+    nextSelector: 'span.next:last a'
   });
 });

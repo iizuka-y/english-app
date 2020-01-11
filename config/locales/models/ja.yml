@@ -8,6 +8,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
+        self_introduction: 自己紹介
 
       post:
         keyword: 単語、構文

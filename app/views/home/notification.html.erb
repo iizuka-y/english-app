@@ -10,8 +10,9 @@
       <!--投稿コンテナ-->
       <% if @notifications.any? %>
         <div class="posts">
-          <ol>
+          <ol class="post-list jscroll">
             <%= render @notifications %>
+            <%= paginate @notifications %>
           </ol>
         </div>
       <% else %>

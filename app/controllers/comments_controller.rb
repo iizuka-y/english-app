@@ -1,11 +1,13 @@
 class CommentsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:destroy]
+  before_action :ranking_user, only: [:create]
   after_action :create_notifications, only: [:create]
 
   def create
     @comment = current_user.comments.build(comment_params)
     @post = Post.find(params[:post_id])
+    @comments = @post.comments.page(params[:page]).per(10)
     if @comment.save
       flash[:success] = "コメントを送信しました！"
       redirect_to post_url(params[:post_id])
@@ -40,6 +42,10 @@ class CommentsController < ApplicationController
   def correct_user
     @comment = Comment.find_by(comment_params)
     redirect_to post_url(params[:post_id]) unless current_user?(@comment.user)
+  end
+
+  def ranking_user
+    @ranking_users = User.limit(10).order('star_count DESC')
   end
 
 end

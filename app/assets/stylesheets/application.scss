@@ -486,3 +486,21 @@ footer {
   right: 12px;
   cursor: pointer;
 }
+
+/*無限スクロール用*/
+ol.post-list {
+  padding: 0;
+}
+
+nav.pagination {
+  display: none;
+	text-align: center;
+}
+
+.jscroll-added {
+	.loading{/*ロード中に出る画像*/
+		width: 300px;
+		display: block;
+		margin: auto;
+	}
+}

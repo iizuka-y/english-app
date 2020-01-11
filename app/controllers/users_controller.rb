@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
      @user = User.find(params[:id])
-     @posts = @user.posts
+     @posts = @user.posts.page(params[:page]).per(10)
      @post_category = 0
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :self_introduction)
     end
 
     # beforeアクション

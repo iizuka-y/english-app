@@ -16,8 +16,9 @@
         <!--投稿コンテナ-->
         <% if @posts.any? %>
           <div class="posts">
-            <ol>
+            <ol class="post-list jscroll">
               <%= render @posts %>
+              <%= paginate @posts %>
             </ol>
           </div>
         <% end %>
