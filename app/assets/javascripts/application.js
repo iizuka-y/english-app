@@ -38,6 +38,10 @@ $(document).on('turbolinks:load', function(){
           class: "preview",
           title: file.name
         }));
+        $('.field-image').append($('<div></div>').attr({
+          class: "fa fa-times delete-preview"
+        }));
+        $('.remove_image').prop('checked', false);
       };
     })(file);
     reader.readAsDataURL(file); // 画像の読み込み
@@ -49,4 +53,14 @@ $(document).on('turbolinks:load', function(){
     contentSelector: '.post-list',
     nextSelector: 'span.next:last a'
   });
+});
+
+// 投稿画像消去
+$(document).on('click', ".delete-preview", function(){
+  //alert ("ok");
+  $('.remove_image').prop('checked', true);
+  $('#img-field').children('img').remove();
+  $('#img-field').append($('<i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>'));
+  $('.delete-preview').remove();
+  $('#file').val('');
 });

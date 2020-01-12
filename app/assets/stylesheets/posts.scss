@@ -169,6 +169,10 @@
 
 
 /*画像のアップロードレイアウト*/
+.field-image {
+  position: relative;
+}
+
 #img-field {
   font-size: 15px;
   margin-top: 10px;
@@ -187,6 +191,7 @@
   background-color: #fff;
   overflow: hidden;
   transition: 0.3s ease-out;
+  z-index: 1;
   img {
     max-width: 400px;
     max-height: 250px;
@@ -222,4 +227,26 @@
   transition: 0.3s ease-out;
   display: block;
   color: #fff;
+}
+
+.delete-preview {
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  background-color: #666666;
+  border-radius: 50%;
+  color: white;
+  z-index: 99;
+  position: absolute;
+  top: 40px !important;
+  right: 0;
+  cursor: pointer;
+}
+
+.delete-preview:hover {
+  color: #F7931E;
+}
+
+.remove_image {
+  display: none;
 }
