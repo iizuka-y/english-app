@@ -405,7 +405,7 @@ footer {
 
 .posts-information {
 	font-size: 14px;
-	padding-bottom: 10px;
+	padding: 0 15px 10px 15px;
 }
 
 .posts-time {
@@ -489,12 +489,13 @@ footer {
   position: absolute;
   top: 20%;
   left: 34%;
-  background-color: #e6ecf0;
+  background-color: #fffbae;;
   padding: 20px 0;
   border-radius: 10px;
   width: 450px;
   height: auto;
   text-align: center;
+	border: solid 2px black;
 
 	.modal-btn {
 	}
@@ -507,8 +508,8 @@ footer {
 		margin: 10px 0;
 	}
 
-	.delete {
-		color: red;
+	.delete, .mute {
+		background-color: #ff3c3c;
 	}
 }
 

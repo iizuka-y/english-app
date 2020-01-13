@@ -1,51 +1,26 @@
 <div class="post-option" id="post-option-<%= post.id %>">
   ･･･
-</div>
-<div class="post-modal-wrapper" id="post-modal-<%= post.id %>">
-  <div class="modal">
-    <div class="close-modal">
-      <i class="fa fa-times"></i>
-    </div>
-    <div class="modal-btn">
-      <% if current_user?(post.user) %>
-        <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
-        <%= link_to "編集", edit_post_path(post), class: "edit" %>
-      <% end %>
-      <%= link_to "投稿へ移動", post, class: "show-post" %>
-      <% if !current_user?(post.user) %>
-        <% if current_user.mutes?(post.user) %>
-          <%= link_to "ミュート済み", user_mutes_path(post.user.id), method: :delete,
-          class: "mute" %>
-        <% else %>
-          <%= link_to "投稿者をミュート", user_mutes_path(post.user.id), method: :post,
-          data: { confirm: "#{post.user.name}さんをミュートしてもよろしいですか？" }, class: "mute" %>
+  <div class="post-modal-wrapper" id="post-modal-<%= post.id %>">
+    <div class="modal">
+      <div class="close-modal">
+        <i class="fa fa-times"></i>
+      </div>
+      <div class="modal-btn">
+        <% if current_user?(post.user) %>
+          <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
+          <%= link_to "編集", edit_post_path(post), class: "edit" %>
         <% end %>
-      <% end %>
+        <%= link_to "投稿へ移動", post, class: "show-post" %>
+        <% if !current_user?(post.user) %>
+          <% if current_user.mutes?(post.user) %>
+            <%= link_to "ミュート済み", user_mutes_path(post.user.id), method: :delete,
+            class: "mute" %>
+          <% else %>
+            <%= link_to "投稿者をミュート", user_mutes_path(post.user.id), method: :post,
+            data: { confirm: "#{post.user.name}さんをミュートしてもよろしいですか？" }, class: "mute" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-
-
-<script>
-  $(document).on('turbolinks:load', function() {
-    //モーダルを表示
-    $(document).on("click", "#post-option-<%= post.id %>", function() {
-      alert('モーダルを表示');
-      scrollPosition = $(window).scrollTop();
-      $('#post-modal-<%= post.id %>').fadeIn();
-      $('body').css('position','fixed')
-               .css('width','100%')
-               .css('height','100%')
-               .css('left','0')
-               .css({'top': -scrollPosition});
-    });
-
-    //モーダルを非表示
-    $(document).on("click", ".close-modal, .edit, .show-post", function() {
-      $('#post-modal-<%= post.id %>').fadeOut();
-      $('body').attr( { style: '' } );
-      window.scrollTo( 0 , scrollPosition );
-    });
-  });
-</script>

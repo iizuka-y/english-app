@@ -53,6 +53,45 @@ $(document).on('turbolinks:load', function(){
     contentSelector: '.post-list',
     nextSelector: 'span.next:last a'
   });
+
+  //投稿のモーダル
+  //alert("ok");
+  //モーダルを表示
+  $(document).on("click", ".post-option", function(e) {
+    //alert('モーダルを表示');
+    scrollPosition = $(window).scrollTop();
+    $(this).children('.post-modal-wrapper').fadeIn();
+    // モーダルをスクロールできないように固定
+    $('body').css('position','fixed')
+             .css('width','100%')
+             .css('height','100%')
+             .css('left','0')
+             .css({'top': -scrollPosition});
+
+  });
+
+  $(document).on('click','.post-modal-wrapper',function(e){
+    e.stopPropagation();
+    $('.post-modal-wrapper').fadeOut();
+    //モーダルのスクロール固定を解除
+    $('body').attr( { style: '' } );
+    window.scrollTo( 0 , scrollPosition );
+  })
+
+  $(document).on('click','.modal',function(e){
+    e.stopPropagation();
+  })
+
+
+  //モーダルを非表示
+  $(document).on("click", ".close-modal, .edit, .show-post", function(e) {
+    $('.post-modal-wrapper').fadeOut();
+    //モーダルのスクロール固定を解除
+    $('body').attr( { style: '' } );
+    window.scrollTo( 0 , scrollPosition );
+
+  });
+
 });
 
 // 投稿画像消去
