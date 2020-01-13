@@ -38,21 +38,28 @@
     <div class="main-visual">
     </div>
     <div class="about-container">
-      <h2>面白英作文とは？</h2>
+      <h2>
+        <%= image_tag("banana.png", alt: "バナナ", class: "banana") %>
+        <%= image_tag("top-h2-explanation.png", alt: "面白英作文とは？", id: "top-h2-explanation") %>
+        <%= image_tag("banana.png", alt: "バナナ", class: "banana") %>
+      </h2>
       <div class="explanation-box">
-        <p>
-          英語の勉強をしていると教科書には必ず文法、構文そして単語には例文がついてきます。<br>
-          しかし教科書の例文は非常に堅苦しくてつまらなくないですか？<br>
-          もっと面白くて覚えやすい例文があったらなぁ…<br>
-          そんな思いのもと作ったのがこの面白英作文です。<br>
-          この面白英作文ではその名の通り面白い例文を自分で作成してみんなで共有す るSNSサービスです。<br>
-          インパクトがあって印象に残る面白い例文をみんなで作って英語の文法、構文、単語を覚えましょう！<br>
-        </p>
+        <div class="explanation-box-left">
+          <p>英語の勉強をしていると教科書には必ず文法、構文そして単語には例文がついてきます。</p>
+          <p>しかし教科書の例文は非常に堅苦しくてつまらなくないですか？</p>
+          <p>「もっと面白くて覚えやすい例文があったらなぁ…」</p>
+          <p>そんな思いのもと作ったのがこの面白英作文です。</p>
+          <p>この面白英作文ではその名の通り面白い例文を自分で作成してみんなで共有するSNSサービスです。</p>
+          <p>インパクトがあって印象に残る面白い例文をみんなで作って英語の文法、構文、単語を覚えましょう！</p>
+        </div>
+        <div class="explanation-box-right">
+          <%= image_tag("gorira-manga.png", alt: "ゴリラのイラスト") %>
+        </div>
       </div>
     </div>
     <div class="signup-login-box">
       <div class="new-user-btn">
-        <%= link_to "新規登録", signup_path %>
+        <%= link_to image_tag("begin-now.png", alt: "新規登録"), signup_path %>
       </div>
       <p><%= link_to "ログインはコチラ！", login_path %></p>
     </div>

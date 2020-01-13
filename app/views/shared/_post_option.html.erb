@@ -1,5 +1,5 @@
 <div class="post-option" id="post-option-<%= post.id %>">
-  ・・・
+  ･･･
 </div>
 <div class="post-modal-wrapper" id="post-modal-<%= post.id %>">
   <div class="modal">
@@ -28,23 +28,24 @@
 
 
 <script>
-  //モーダルを表示
-  $('#post-option-<%= post.id %>').click(function() {
-    //alert('モーダルを表示');
-    scrollPosition = $(window).scrollTop();
-    $('#post-modal-<%= post.id %>').fadeIn();
-    $('body').css('position','fixed')
-             .css('width','100%')
-             .css('height','100%')
-             .css('left','0')
-             .css({'top': -scrollPosition});
-  });
+  $(document).on('turbolinks:load', function() {
+    //モーダルを表示
+    $(document).on("click", "#post-option-<%= post.id %>", function() {
+      alert('モーダルを表示');
+      scrollPosition = $(window).scrollTop();
+      $('#post-modal-<%= post.id %>').fadeIn();
+      $('body').css('position','fixed')
+               .css('width','100%')
+               .css('height','100%')
+               .css('left','0')
+               .css({'top': -scrollPosition});
+    });
 
-  //モーダルを非表示
-  $('.close-modal, .edit, .show-post').click(function() {
-    $('#post-modal-<%= post.id %>').fadeOut();
-    $('body').attr( { style: '' } );
-    window.scrollTo( 0 , scrollPosition );
+    //モーダルを非表示
+    $(document).on("click", ".close-modal, .edit, .show-post", function() {
+      $('#post-modal-<%= post.id %>').fadeOut();
+      $('body').attr( { style: '' } );
+      window.scrollTo( 0 , scrollPosition );
+    });
   });
-
 </script>

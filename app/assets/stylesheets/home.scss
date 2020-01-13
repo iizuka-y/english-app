@@ -3,7 +3,7 @@
 *{
 	margin: 0;
 	padding: 0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 
 }
 
@@ -17,50 +17,89 @@ main {
 .main-visual {
     width: 100%;
     height: 100vh;
-    z-index: -1;
-    background-image: image-url("/img2.jpg");
+    background-image: image-url("main-visual.png");
     background-position: center;
+		background-size: cover;
     position: relative;
 }
 
 .about-container {
     width: 1000px;
-    margin: 0 auto;
+    margin: 150px auto;
     text-align: center;
+
+		h2 {
+			margin-bottom: 30px;
+		}
+
+		.banana {
+			height: 45px;
+			margin-left: -20px;
+			margin-right: -10px;
+		}
+
+		#top-h2-explanation {
+			height: 40px;
+		}
 }
 
 .explanation-box {
-    width: 710px;
+    width: 800px;
     margin: 0 auto;
-    padding: 30px 0 100px 0;
+    padding: 30px 20px;
     text-align: start;
+		background-color: #FEBB15;
+		border-radius: 10px;
+		display: flex;
+		justify-content: space-between;
+		p {
+			font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+			line-height: 20px;
+			margin: 50px 0;
+			font-weight: 600;
+		}
+}
+
+.explanation-box-left {
+	width: 500px;
+}
+
+.explanation-box-right {
+	width: 200px;
+	img {
+		width: 200px;
+		padding-top: 30px;
+	}
 }
 
 .signup-login-box {
     text-align: center;
+		a:visited {
+			color: blue;
+		}
 }
 
 .new-user-btn {
-    width: 220px;
-    height: 95px;
     margin: 0 auto;
-
 }
 
-.new-user-btn a {
-    display: inline-block;/*inline-blockにはmargin: 0 autoが使えない！*/
-    font-size: 50px;
-    padding: 10px;
-    color: white;
-    background-color: #F7931E;
-    border-radius: 20px;
+.new-user-btn img {
+	height: 100px;
+	margin-bottom: 10px;
 }
 
 
 /*お知らせのレイアウト*/
+#h2-center {
+	text-align: center;
+	margin-bottom: 15px;
+}
+
 .notifications-container {
 	padding: 15px;
-	border-top: solid 1px #999999;
+	border: solid 2px black;
+	background-color: white;
+	margin-bottom: 20px;
 }
 
 .notifications-container-top {
@@ -73,6 +112,9 @@ main {
     vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
     詳しくはhttps://html5experts.jp/takazudo/13592*/
     object-fit: cover; /*トリミング*/
+	}
+	p {
+		padding: 10px 0;
 	}
 	a:visited {
 		color: blue;

@@ -1,7 +1,7 @@
 <header>
   <div class="header-container">
     <div class="header_logo">
-      <h1><%= link_to "面白英作文", root_path, id: "logo" %></h1>
+      <h1><%= link_to image_tag("header-logo.png", alt: "面白英作文"), root_path, id: "logo" %></h1>
     </div>
     <nav class="header_nav">
       <ul>
@@ -12,7 +12,6 @@
           <li><%= link_to "マイページ", user_path(current_user) %></li>
           <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
         <% else %>
-          <li><%= link_to "面白英作文とは？", '#' %></li>
           <li><%= link_to "新規登録", signup_path %></li>
           <li><%= link_to "ログイン", login_path %></li>
         <% end %>

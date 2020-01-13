@@ -4,7 +4,7 @@
 
 /*コメント用レイアウト*/
 #comment-form  {
-  padding: 20px 15px;
+  padding: 20px 0;
   textarea {
     width: 100%;
     border: 1px solid #d8dadf;
@@ -13,7 +13,7 @@
     font-size: 16px;
     letter-spacing: 2px; /*文字間*/
     border-radius: 10px;
-    background-color: #E6E6E6;
+    background-color: white;
     height: 80px;
   }
 
@@ -31,10 +31,14 @@
   }
 }
 
+#comment-posts {
+  border: solid 1px black;
+}
+
 .comment-container {
   padding: 15px;
-  border-top: solid 1px #999999;
-	border-bottom: solid 1px #999999;
+  background-color: white;
+  border: solid 1px black;
 }
 
 .comment-top {
@@ -101,11 +105,12 @@
 }
 
 .post-form-box {
-    background-color: white;
+    background-color: #FEBB15;
     width: 100%;
     padding: 40px 20px 0px 20px;
     display: flex;
     justify-content: space-between;
+    box-shadow: 2px 2px 4px gray;
 }
 
 .post-form-box textarea {
@@ -117,7 +122,7 @@
     letter-spacing: 2px; /*文字間*/
     border-radius: 5px;
     margin-bottom: 35px;
-    background-color: #E6E6E6;
+    background-color: white;
 }
 
 .form-content {
@@ -145,7 +150,7 @@
     letter-spacing: 2px; /*文字間*/
     border-radius: 5px;
     margin-bottom: 35px;
-    background-color: #E6E6E6;
+    background-color: white;
 }
 
 .post-form input[type="submit"] {
@@ -218,7 +223,7 @@
 }
 
 #img-field:hover {
-  background-color: #EDBC6C;
+  background-color: #FDDED3;
   transition: 0.3s ease-out;
   opacity: 0.9;
 }
