@@ -5,9 +5,13 @@ class HomeController < ApplicationController
   def index
     if logged_in?
       mute_ids = "SELECT muted_id FROM mutes WHERE muting_id = #{current_user.id}"
-      @posts = Post.where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
+      if params[:q]
+        @posts = Post.search_by_keyword(params[:q]).where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
+      else
+        @posts = Post.where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
       # @posts = Post.where("NOT user_id IN (?)", current_user.muting_users.map(&:id))
       # ↑誰もミュートしていないときに@postsがnilになる
+      end
     end
   end
 

@@ -66,7 +66,7 @@ module SessionsHelper
     if count == 0
       return
     else
-      return "(#{count})"
+      return count
     end
   end
 

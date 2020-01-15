@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get  '/index', to: 'home#index'
   get  '/notification',  to: 'home#notification'
   post '/notification',  to: 'home#create'
 
@@ -21,6 +22,9 @@ Rails.application.routes.draw do
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy] do
     resource :evaluations, only: [:create, :destroy]
     resource :comments, only: [:create, :destroy]
+    collection do
+      get :autocomplete
+    end
   end
 
 

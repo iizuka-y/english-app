@@ -12,6 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery
+//= require jquery-ui
 //= require bootstrap
 //= require activestorage
 //= require jquery.jscroll.min.js
@@ -54,42 +55,14 @@ $(document).on('turbolinks:load', function(){
     nextSelector: 'span.next:last a'
   });
 
-  //投稿のモーダル
-  //alert("ok");
-  //モーダルを表示
-  $(document).on("click", ".post-option", function(e) {
-    //alert('モーダルを表示');
-    scrollPosition = $(window).scrollTop();
-    $(this).children('.post-modal-wrapper').fadeIn();
-    // モーダルをスクロールできないように固定
-    $('body').css('position','fixed')
-             .css('width','100%')
-             .css('height','100%')
-             .css('left','0')
-             .css({'top': -scrollPosition});
-
-  });
-
-  $(document).on('click','.post-modal-wrapper',function(e){
-    e.stopPropagation();
-    $('.post-modal-wrapper').fadeOut();
-    //モーダルのスクロール固定を解除
-    $('body').attr( { style: '' } );
-    window.scrollTo( 0 , scrollPosition );
-  })
-
-  $(document).on('click','.modal',function(e){
-    e.stopPropagation();
-  })
 
 
-  //モーダルを非表示
-  $(document).on("click", ".close-modal, .edit, .show-post", function(e) {
-    $('.post-modal-wrapper').fadeOut();
-    //モーダルのスクロール固定を解除
-    $('body').attr( { style: '' } );
-    window.scrollTo( 0 , scrollPosition );
-
+  //オートコンプリート
+  var data = ['test', 'have to', 'test2'];
+  $('#auto-complete').autocomplete({
+    source: "/posts/autocomplete.json",
+    delay: 500,
+    minLength: 2
   });
 
 });
@@ -102,4 +75,42 @@ $(document).on('click', ".delete-preview", function(){
   $('#img-field').append($('<i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>'));
   $('.delete-preview').remove();
   $('#file').val('');
+});
+
+//投稿のモーダル
+//alert("ok");
+//モーダルを表示
+$(document).on("click", ".post-option", function(e) {
+  //alert('モーダルを表示');
+  scrollPosition = $(window).scrollTop();
+  $(this).children('.post-modal-wrapper').fadeIn();
+  // モーダルをスクロールできないように固定
+  $('body').css('position','fixed')
+           .css('width','100%')
+           .css('height','100%')
+           .css('left','0')
+           .css({'top': -scrollPosition});
+
+});
+
+$(document).on('click','.post-modal-wrapper',function(e){
+  e.stopPropagation();
+  $('.post-modal-wrapper').fadeOut();
+  //モーダルのスクロール固定を解除
+  $('body').attr( { style: '' } );
+  window.scrollTo( 0 , scrollPosition );
+})
+
+$(document).on('click','.modal',function(e){
+  e.stopPropagation();
+})
+
+
+//モーダルを非表示
+$(document).on("click", ".close-modal, .edit, .show-post", function(e) {
+  $('.post-modal-wrapper').fadeOut();
+  //モーダルのスクロール固定を解除
+  $('body').attr( { style: '' } );
+  window.scrollTo( 0 , scrollPosition );
+
 });

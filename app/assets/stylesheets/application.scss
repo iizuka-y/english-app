@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 /**/
 /* 基本要素の指定 */
@@ -541,4 +542,30 @@ nav.pagination {
 		display: block;
 		margin: auto;
 	}
+}
+
+/*検索窓のレイアウト*/
+.form-control {
+	width: 100%;
+	border-radius: 8px;
+	padding: 0 10px;
+	margin-bottom: 20px;
+	border: solid 1px;
+}
+
+/*お知らせ用のレイアウト*/
+#notification {
+	position: relative;
+}
+
+#notification-count {
+	background-color: red;
+	border: solid 2px black;
+	position: absolute;
+	top: -9px;
+	left: -16px;
+	color: white;
+	font-weight: 600;
+	padding: 0 7px;
+	border-radius: 10px;
 }

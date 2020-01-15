@@ -42,6 +42,11 @@ class PostsController < ApplicationController
     redirect_to request.referrer || root_url #request.referrerメソッドは一つ前のURLを返す
   end
 
+  def autocomplete
+    @posts = Post.autocomplete(params[:term]).pluck(:keyword)
+    render json: @posts.to_json
+  end
+
   private
     def post_params
       params.require(:post).permit(:keyword, :content, :information, :image, :image_cache, :remove_image)

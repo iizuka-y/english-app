@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :evaluated]
   before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :ranking_user, only: [:show]
+  before_action :ranking_user, only: [:show, :evaluated]
   after_action :edit_star_count, only: [:destroy]
 
   def show
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
 
   def evaluated
     @user = User.find(params[:id])
-    @posts = @user.evaluate_posts
+    @posts = @user.evaluate_posts.page(params[:page]).per(10)
     @post_category = 1
     render 'show'
   end

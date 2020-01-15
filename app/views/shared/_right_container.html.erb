@@ -1,5 +1,13 @@
 <div class="right-container">
   <div id="sidebar">
+    <!--検索-->
+    <%= form_tag(index_path, method: :get) do %>
+      <div class="input-group">
+        <%= search_field_tag "q", params[:q], class: "form-control", placeholder: "単語、構文を検索", id: "auto-complete" %>
+
+      </div>
+    <% end %>
+
     <!--current_user情報-->
     <div id="current-user-container">
       <%= link_to gravatar_for(current_user), current_user %>

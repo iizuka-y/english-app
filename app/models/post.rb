@@ -5,6 +5,10 @@ class Post < ApplicationRecord
   has_many :notifications ,dependent: :destroy
 
   default_scope -> { order(created_at: :desc) } # 新しい投稿順に取得する
+  scope :search_by_keyword, -> (keyword) { #検索用
+    where("posts.keyword LIKE :keyword" , keyword: "#{sanitize_sql_like(keyword)}") if keyword.present?
+  }
+  scope :autocomplete, ->(term) { where("keyword LIKE ?", "#{term}%").distinct } # オートコンプリート用
   mount_uploader :image, ImageUploader
   validates :user_id, presence: true
   validates :keyword, presence: true, length: { maximum: 50 }
