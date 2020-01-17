@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:destroy]
   before_action :ranking_user, only: [:create]
+  before_action :reibun_form, only: [:create]
   after_action :create_notifications, only: [:create]
 
   def create
@@ -46,6 +47,10 @@ class CommentsController < ApplicationController
 
   def ranking_user
     @ranking_users = User.limit(10).order('star_count DESC')
+  end
+
+  def reibun_form
+    @favorite = Favorite.new
   end
 
 end

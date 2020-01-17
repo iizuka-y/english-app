@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :evaluated]
   before_action :correct_user,   only: [:edit, :update, :destroy]
   before_action :ranking_user, only: [:show, :evaluated]
+  before_action :reibun_form, only: [:show, :evaluated]
   after_action :edit_star_count, only: [:destroy]
 
   def show
@@ -73,6 +74,10 @@ class UsersController < ApplicationController
 
     def ranking_user
       @ranking_users = User.limit(10).order('star_count DESC')
+    end
+
+    def reibun_form
+      @favorite = Favorite.new
     end
 
     # afterアクション

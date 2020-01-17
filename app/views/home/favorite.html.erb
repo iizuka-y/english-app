@@ -1,0 +1,83 @@
+<% provide(:title, "例文帳") %>
+
+<main>
+  <div class="main-container">
+
+    <!--レイアウト左側-->
+    <div class="left-container">
+
+      <div class="category-box">
+        <div></div>
+        <h2><%= current_user.name %>さんの例文帳</h2>
+        <div id="edit-category">
+          <i class="fa fa-cog fa-c-edit"></i>
+
+          <!--編集用モーダル-->
+          <div class="post-modal-wrapper">
+            <div class="modal">
+              <div class="close-modal">
+                <i class="fa fa-times"></i>
+              </div>
+              <div class="reibun-form">
+
+                <%= form_for current_user.favorites.build, url: favorite_update_path, html: {class: "inform_save", method: :post} do |f| %>
+                  <h3>カテゴリーの編集</h3>
+                  <select id="category-edit">
+                    <option value="00">カテゴリーを選択</option>
+                    <% i = 0 %>
+                    <% @categories.each do |category| %>
+                      <option value="<%= category %>"><%= category %></option>
+                      <% i+= 1 %>
+                    <% end %>
+                  </select>
+                  <h3 class="category-h3-hidden">カテゴリー名の変更</h3>
+                  <%= text_field_tag "category_prev", "", {class: "reibun-category-form3 form-control"} %>
+                  <%= f.text_field :category, class: "reibun-category-form form-control display-none" %>
+                  <p class = "categoryMsg"></p>
+                  <%= f.submit "更新", class: "select-submit select-submit3" %>
+                <% end %>
+
+
+                <%= form_for current_user.favorites.build, url: favorite_destroy_path, html: {class: "inform_save", method: :delete} do |f| %>
+                  <%= f.text_field :category, class: 'reibun-category-form2 form-control' %>
+                  <%= f.submit "カテゴリーを削除", class: "select-submit2" %>
+                <% end %>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--投稿部分-->
+      <!--カテゴリー-->
+      <div class="cp_ipselect cp_sl04">
+        <select name="select" id="category" onchange="dropsort()">
+          <option value="/favorite">全件表示</option>
+          <% @categories.each do |category| %>
+            <option value="/favorite/<%= category %>"
+            <% if @id == category %>selected<% end %>><%= category %></option>
+          <% end %>
+        </select>
+      </div>
+
+      <% if @id %>
+        <h3 id="category-name">カテゴリー：<span id="category-tag"><%= @id %></span></h3>
+      <% end %>
+
+      <!--投稿コンテナ-->
+      <% if @posts.any? %>
+        <div class="posts">
+          <ol class="post-list jscroll">
+            <%= render @posts %>
+            <%= paginate @posts %>
+          </ol>
+        </div>
+      <% end %>
+    </div>
+
+    <!--レイアウト右側-->
+    <%= render 'shared/right_container' %>
+
+  </div>
+</main>

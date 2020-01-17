@@ -39,9 +39,7 @@
         <%= image_tag "hukidasi.png", alt: "吹き出し" %>
         <p><%= post.comments.count %></p>
       </div>
-      <div class="reibun-box">
-        <a>例文帳に登録</a>
-      </div>
+      <%= render 'shared/reibun_modal', post: post %>
 
 
     </div>

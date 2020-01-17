@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :evaluate_posts, through: :evaluations, source: :post
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
 
   # ====================自分がミュートしているユーザーとの関連 ===================================
   has_many :active_mutes, class_name: "Mute", foreign_key: :muting_id, dependent: :destroy

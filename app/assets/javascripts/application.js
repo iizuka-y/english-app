@@ -77,10 +77,10 @@ $(document).on('click', ".delete-preview", function(){
   $('#file').val('');
 });
 
-//投稿のモーダル
-//alert("ok");
-//モーダルを表示
-$(document).on("click", ".post-option", function(e) {
+// 投稿のモーダル
+// alert("ok");
+// モーダルを表示
+$(document).on("click", ".post-option, .reibun-box, #edit-category", function(e) {
   //alert('モーダルを表示');
   scrollPosition = $(window).scrollTop();
   $(this).children('.post-modal-wrapper').fadeIn();
@@ -96,7 +96,7 @@ $(document).on("click", ".post-option", function(e) {
 $(document).on('click','.post-modal-wrapper',function(e){
   e.stopPropagation();
   $('.post-modal-wrapper').fadeOut();
-  //モーダルのスクロール固定を解除
+  // モーダルのスクロール固定を解除
   $('body').attr( { style: '' } );
   window.scrollTo( 0 , scrollPosition );
 })
@@ -106,11 +106,76 @@ $(document).on('click','.modal',function(e){
 })
 
 
-//モーダルを非表示
+// モーダルを非表示
 $(document).on("click", ".close-modal, .edit, .show-post", function(e) {
   $('.post-modal-wrapper').fadeOut();
   //モーダルのスクロール固定を解除
   $('body').attr( { style: '' } );
   window.scrollTo( 0 , scrollPosition );
 
+});
+
+// 例文帳登録用
+$(document).on('change', '.category', function(){
+	var select_val = $(this).val();
+  //alert(select_val);
+	if (select_val == "00"){
+		$(this).next('.reibun-category-form').val("").show();
+	}else{
+		$(this).next('.reibun-category-form').val(select_val).hide();
+	};
+});
+
+// submitに何故かつくdisabledを取り除く
+/*
+$(document).on('click','.reibun-form', function(){
+  $(this).find('.select-submit').prop('disabled', false);
+});
+*/
+
+// 例文帳のバリデーション
+$(document).on('click', '.select-submit', function(e){
+  if( $(this).prevAll('.reibun-category-form').val() == "" ){
+    $(this).prevAll('.categoryMsg').html("カテゴリーを入力してください");
+    e.preventDefault();
+  };
+});
+
+// 例文帳のカテゴリー選択
+function dropsort() {
+    var browser = $('#category').val();
+    //alert(browser);
+    location.href = browser;
+}
+
+// 例文帳編集用
+$(document).on('change', '#category-edit', function(){
+	var select_val = $(this).val();
+  //alert(select_val);
+	if (select_val == "00"){
+		$(this).nextAll('.reibun-category-form').val("").hide();
+    $('.reibun-category-form2').val("");
+    $('.reibun-category-form3').val("");
+    $('.category-h3-hidden').hide();
+    $('.select-submit2').hide();
+    $('.select-submit3').hide();
+	}else{
+		$(this).nextAll('.reibun-category-form').val(select_val).show();
+    $('.reibun-category-form2').val(select_val);
+    $('.reibun-category-form3').val(select_val);
+    $('.category-h3-hidden').show();
+    $('.select-submit2').show();
+    $('.select-submit3').show();
+	};
+});
+
+$(document).on('click', '.select-submit2', function(e){
+  if( $('.reibun-category-form2').val() == "" ){
+    $('.categoryMsg').html("カテゴリーを選択してください");
+    e.preventDefault();
+  }else{
+    if(!confirm('カテゴリーを削除するとそのカテゴリーに属する投稿の登録が解除されます。よろしいですか？')){
+        e.preventDefault();
+    };
+  };
 });

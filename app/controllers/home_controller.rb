@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_action :logged_in_user, only: [:create, :notification]
-  before_action :ranking_user, only: [:index, :notification]
+  before_action :ranking_user, only: [:index, :notification, :favorite]
+  before_action :reibun_form, only: [:index]
 
   def index
     if logged_in?
@@ -25,9 +26,28 @@ class HomeController < ApplicationController
     .page(params[:page]).per(10)
   end
 
+  def favorite
+    @favorites = current_user.favorites
+    @categories = @favorites.pluck(:category).uniq
+    if params[:id]
+      @id = params[:id]
+      favorites = current_user.favorites.where("category = ?", params[:id]).order(created_at: :desc)
+      @posts = Kaminari.paginate_array(favorites.map{|favorite| favorite.post}).page(params[:page]).per(10)
+    else
+      @posts = current_user.favorite_posts.page(params[:page]).per(10)
+    end
+  end
+
+
   # beforeアクション
   def ranking_user
     @ranking_users = User.limit(10).order('star_count DESC')
   end
+
+  def reibun_form
+    @favorite = Favorite.new
+  end
+
+
 
 end

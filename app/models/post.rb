@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :evaluations, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :notifications ,dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) } # 新しい投稿順に取得する
   scope :search_by_keyword, -> (keyword) { #検索用
