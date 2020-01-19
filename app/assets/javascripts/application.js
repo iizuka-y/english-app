@@ -138,6 +138,11 @@ $(document).on('click', '.select-submit', function(e){
   if( $(this).prevAll('.reibun-category-form').val() == "" ){
     $(this).prevAll('.categoryMsg').html("カテゴリーを入力してください");
     e.preventDefault();
+  }else{
+    $('.post-modal-wrapper').fadeOut();
+    //モーダルのスクロール固定を解除
+    $('body').attr( { style: '' } );
+    window.scrollTo( 0 , scrollPosition );
   };
 });
 

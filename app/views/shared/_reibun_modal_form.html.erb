@@ -1,0 +1,19 @@
+<% categories = current_user.favorites.pluck(:category).uniq %>
+<% @favorite = Favorite.new %>
+<%= form_for [post, @favorite], html: {id: "#{post.id}", class: "inform_save"}, remote: true do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+  <div><%= f.hidden_field :post_id, :value => post.id %></div>
+  <h3>カテゴリーを選択または追加</h3>
+  <select class="category">
+    <option value="00">新しいカテゴリーを追加</option>
+    <% i = 0 %>
+    <% categories.each do |category| %>
+      <option value="<%= category %>"><%= category %></option>
+      <% i+= 1 %>
+    <% end %>
+  </select>
+  <%= f.text_field :category, placeholder: "カテゴリーを入力してください", class: 'reibun-category-form form-control' %>
+  <p class = "categoryMsg"></p>
+  <%= f.submit "登録", class: "select-submit" %>
+
+<% end %>

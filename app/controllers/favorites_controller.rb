@@ -4,9 +4,12 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = current_user.favorites.build(favorite_params)
+    @post = @favorite.post
     @favorite.save!
-    flash[:success] = "例文帳に登録しました"
-    redirect_to request.referer
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   def update
@@ -26,9 +29,12 @@ class FavoritesController < ApplicationController
 
   def destroy # 例文帳の登録解除
     favorite = current_user.favorites.find_by(post_id: params[:post_id])
+    @post = Post.find(params[:post_id])
     favorite.destroy
-    flash[:success] = "登録を解除しました"
-    redirect_to request.referer
+    respond_to do |format|
+      format.html { redirect_to request.referer }
+      format.js
+    end
   end
 
   private

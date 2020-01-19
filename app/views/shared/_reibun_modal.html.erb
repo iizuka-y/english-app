@@ -1,5 +1,5 @@
 <% if post.favorites.where(user_id: current_user.id).exists? %>
-<p class="reibun-delete"><%= link_to "登録済み", post_favorites_path(post.id), method: :delete %></p>
+<p class="reibun-delete"><%= link_to "登録済み", post_favorites_path(post.id), method: :delete, class: "delete-reibun", remote: true %></p>
 <% else %>
 <div class="reibun-box">
   <p>例文帳に登録</p>
@@ -9,25 +9,7 @@
         <i class="fa fa-times"></i>
       </div>
       <div class="reibun-form">
-        <% categories = current_user.favorites.pluck(:category).uniq %>
-        <%= form_for [post, @favorite], html: {id: "#{post.id}", class: "inform_save"} do |f| %>
-        <%= render 'shared/error_messages', object: f.object %>
-          <div><%= f.hidden_field :post_id, :value => post.id %></div>
-          <%= f.label :category, "カテゴリーを選択または追加" %>
-          <select class="category">
-            <option value="00">新しいカテゴリーを追加</option>
-            <% i = 0 %>
-            <% categories.each do |category| %>
-              <option value="<%= category %>"><%= category %></option>
-              <% i+= 1 %>
-            <% end %>
-          </select>
-          <%= f.text_field :category, placeholder: "カテゴリーを入力してください", class: 'reibun-category-form form-control' %>
-          <p class = "categoryMsg"></p>
-          <%= f.submit "登録", class: "select-submit" %>
-
-        <% end %>
-
+        <%= render 'shared/reibun_modal_form', post: post %>
       </div>
     </div>
   </div>
