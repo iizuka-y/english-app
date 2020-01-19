@@ -7,10 +7,11 @@
       <div>
         <%= form_for (@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        　<div class="gravatar_edit">
-            <%= gravatar_for @user %>
-            <a href="http://gravatar.com/emails" target="_blank" rel="noopener">画像を変更</a>
+        　<div id="user-picture" onClick="$('#upicon').click()">
+            <%= image_tag(@user.picture.url) %>
           </div>
+          <%= f.hidden_field :picture_cache %>
+          <%= f.file_field :picture, accept: 'image/jpeg,image/git,image/png', class: "image", style: "display:none;", id: "upicon" %>
 
           <%= f.label :name, "ユーザー名" %>
           <%= f.text_field :name, class: 'form-control' %>
@@ -33,4 +34,39 @@
   　</div>
     <%= link_to "このアカウントを消去", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
   </div>
+
+  <!--画像選択後のトリミング画面用div-->
+  <!--
+  <div class="overlay" style="display:none;" >
+    <div class="crop_modal"></div>
+    <div class="close_btn"></div>
+    <div class="select_icon_btn">決定</div>
+  </div>
+  -->
 </main>
+
+<script>
+  $(document).on('turbolinks:load', function(){
+    $fileField = $('#upicon')
+
+    // 選択された画像を取得し表示
+    $($fileField).on('change', $fileField, function(e) {
+      //alert ("ok");
+      file = e.target.files[0]
+      reader = new FileReader(),
+      $preview = $("#user-picture");
+
+      reader.onload = (function(file) {
+        return function(e) {
+          $preview.empty();
+          $preview.append($('<img>').attr({
+            src: e.target.result,
+            class: "preview",
+            title: file.name
+          }));
+        };
+      })(file);
+      reader.readAsDataURL(file); // 画像の読み込み
+    });
+  });
+</script>

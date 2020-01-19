@@ -25,6 +25,7 @@ class User < ApplicationRecord
   validates :self_introduction, length: { maximum: 120 }
   has_secure_password
   validates :password, presence: true, length: { minimum: 4 }, allow_nil: true
+  mount_uploader :picture, PictureUploader
 
   # 渡された文字列のハッシュ値を返す(ダイジェストに変換)
   def User.digest(string)

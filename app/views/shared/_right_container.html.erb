@@ -10,7 +10,7 @@
 
     <!--current_user情報-->
     <div id="current-user-container">
-      <%= link_to gravatar_for(current_user), current_user %>
+      <%= link_to image_tag(current_user.picture.url), user_path(current_user) %>
       <%= link_to current_user.name, user_path(current_user) %>
       <p>例文作成数 <%= current_user.posts.count %>　★獲得数 <%= sum_stars(current_user.posts) %> </p>
     </div>
@@ -28,7 +28,7 @@
       <% @ranking_users.each do |ranking_user| %>
         <div class="ranking-table-main">
           <%= i %>
-          <%= link_to gravatar_for(ranking_user), ranking_user %>
+          <%= link_to image_tag(ranking_user.picture.url), user_path(ranking_user) %>
           <%= link_to ranking_user.name, user_path(ranking_user) %>
           <div class="ranking-star-count"><%= "★#{ranking_user.star_count}" %></div>
         </div>

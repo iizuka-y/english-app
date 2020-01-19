@@ -2,7 +2,7 @@
   <div class="notifications-container">
     <!--お知らせコンテナ上部-->
     <div class="notifications-container-top">
-      <%= link_to gravatar_for(notification.notified_by), notification.notified_by.name %>
+      <%= link_to image_tag(notification.notified_by.picture.url), user_path(notification.notified_by) %>
       <% if notification.notified_type == "評価" %>
         <p>
           <%= notification.notified_by.name %>さんが<%= link_to "あなたの投稿", post_path(notification.post) %>を評価しました。

@@ -10,7 +10,7 @@
       <div id="profile-container">
         <div id="profile-container-up">
           <div id="user-name">
-            <%= gravatar_for @user %>
+            <%= image_tag(@user.picture.url) %>
             <p><%= @user.name %></p>
           </div>
           <div id="user-info">

@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require activestorage
 //= require jquery.jscroll.min.js
+//= require cropper.min.js
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
