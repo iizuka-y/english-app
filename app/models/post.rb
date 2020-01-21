@@ -5,14 +5,15 @@ class Post < ApplicationRecord
   has_many :notifications ,dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  acts_as_taggable
+  ActsAsTaggableOn.remove_unused_tags = true
+
   default_scope -> { order(created_at: :desc) } # 新しい投稿順に取得する
-  scope :search_by_keyword, -> (keyword) { #検索用
-    where("posts.keyword LIKE :keyword" , keyword: "#{sanitize_sql_like(keyword)}") if keyword.present?
-  }
-  scope :autocomplete, ->(term) { where("keyword LIKE ?", "#{term}%").distinct } # オートコンプリート用
   mount_uploader :image, ImageUploader
+
+  validates :tag_list,  presence: true
   validates :user_id, presence: true
-  validates :keyword, presence: true, length: { maximum: 50 }
+  # validates :keyword, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 200 }
   validate :image_size
 

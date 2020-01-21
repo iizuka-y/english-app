@@ -70,6 +70,8 @@ gem 'carrierwave'
 gem 'jquery-rails', '4.3.1'
 gem 'kaminari'
 gem 'jquery-ui-rails'
+gem 'acts-as-taggable-on'
+gem 'gon'
 
 
 group :production do

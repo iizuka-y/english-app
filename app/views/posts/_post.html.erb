@@ -10,7 +10,9 @@
 
       <!--キーワード部分-->
       <div class="posts-keyword">
-        <%= link_to post.keyword, "#" %>
+        <% post.tags.each do |tag| %>
+          <%= link_to tag, index_path(q: tag.name) %>
+        <% end %>
         <%= render 'shared/post_option', post: post %>
       </div>
     </div>

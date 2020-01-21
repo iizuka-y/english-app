@@ -1,28 +1,24 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 投稿1:
-  keyword: test1
   content: test1だよ
   information: test1です
   created_at: <%= 10.minutes.ago %>
   user: マイケル
 
 投稿2:
-  keyword: test2
   content: test2だよ
   information: test2です
   created_at: <%= 3.years.ago %>
   user: マイケル
 
 投稿3:
-  keyword: test3
   content: test3だよ
   information: test3です
   created_at: <%= 2.hours.ago %>
   user: 太郎
 
 最新の投稿:
-  keyword: recent_test
   content: recent_testだよ
   information: recent_testです
   created_at: <%= Time.zone.now %>

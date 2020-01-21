@@ -4,7 +4,7 @@ class PostTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:マイケル)
-    @post = @user.posts.build(keyword:"test", content: "testだよ！", information: "testです")
+    @post = @user.posts.build(tag_list: "tag", content: "testだよ！", information: "testです")
   end
 
   test "should be valid" do
@@ -16,8 +16,8 @@ class PostTest < ActiveSupport::TestCase
     assert_not @post.valid?
   end
 
-  test "keyword should be present" do
-    @post.keyword = ""
+  test "tag_list should be present" do
+    @post.tag_list = nil
     assert_not @post.valid?
   end
 

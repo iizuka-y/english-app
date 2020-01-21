@@ -13,6 +13,7 @@ ja:
       post:
         keyword: 単語、構文
         content: 例文
+        tag_list: タグ
 
       comment:
         content: コメント

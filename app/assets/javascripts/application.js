@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery-ui
+//= require tag-it
 //= require bootstrap
 //= require activestorage
 //= require jquery.jscroll.min.js
@@ -63,8 +64,38 @@ $(document).on('turbolinks:load', function(){
   $('#auto-complete').autocomplete({
     source: "/posts/autocomplete.json",
     delay: 500,
-    minLength: 2
+    minLength: 2,
+    autoFocus: true,
+    focus: function(event, ui){event.preventDefault()},
+    select: function(event, ui) {
+        $('#auto-complete').val(ui.item.value.replace(/\(\d+\D\)/g, ""));
+        return false;
+      }
   });
+
+  //投稿のタグ
+  $("#post-tags").tagit({
+    fieldName:   'post[tag_list]',
+    singleField: true,
+    tagLimit: 3,
+    allowSpaces: true,
+    availableTags: gon.available_tags,
+    autocomplete: {
+      delay: 500,
+      minLength: 2,
+      autoFocus: true,
+      focus: function(event, ui){event.preventDefault()}
+    },
+    preprocessTag: function(val) { // タグ選択時に（投稿回数）部分をreplace
+      return val.replace(/\(\d+\D\)/g, "");
+    }
+ });
+ if (gon.post_tags != null){
+   //alert(gon.article_tags);
+   for(tag in gon.post_tags){
+     $('#post-tags').tagit('createTag', gon.post_tags[tag]);
+   };
+ };
 
 });
 

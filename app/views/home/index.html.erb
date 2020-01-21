@@ -8,6 +8,10 @@
 
         <!--投稿部分-->
         <!--カテゴリー-->
+        <% if @tag %>
+          <h3 id="category-name">カテゴリー：<span class="tag-blue"><%= @tag %></span></h3>
+        <% end %>
+
         <div class="post-category">
           <p>人気の例文</p>
           <%= link_to "新着例文", "#" %>

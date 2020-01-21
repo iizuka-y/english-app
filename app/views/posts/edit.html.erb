@@ -5,8 +5,14 @@
       <div class="post-form-box">
         <div id="form-box-left">
           <%= render 'shared/error_messages', object: f.object %>
-          <%= f.label :keyword, "単語、構文" %>
-          <%= f.text_field :keyword, placeholder: "何の単語、構文で英作文するかを記述　例)have to", class: 'form-control' %>
+          <% if f.object.errors.any? %>
+            <div class="field_with_errors">
+          <% end %>
+          <h3>タグ：単語、構文など(最大3つまで)</h3>
+          <ul id="post-tags" class="form-control"></ul>
+          <% if f.object.errors.any? %>
+            </div>
+          <% end %>
 
           <%= f.label :content, "内容" %>
           <%= f.text_area :content, class: 'form-control form-content' %>

@@ -6,7 +6,9 @@ class HomeController < ApplicationController
     if logged_in?
       mute_ids = "SELECT muted_id FROM mutes WHERE muting_id = #{current_user.id}"
       if params[:q]
-        @posts = Post.search_by_keyword(params[:q]).where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
+        # @posts = Post.search_by_keyword(params[:q]).where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
+        @posts = Post.tagged_with(params[:q]).page(params[:page]).per(10)
+        @tag = params[:q]
       else
         @posts = Post.where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
       # @posts = Post.where("NOT user_id IN (?)", current_user.muting_users.map(&:id))
