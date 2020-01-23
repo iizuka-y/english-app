@@ -5,11 +5,35 @@ class HomeController < ApplicationController
   def index
     if logged_in?
       mute_ids = "SELECT muted_id FROM mutes WHERE muting_id = #{current_user.id}"
-      if params[:q]
-        # @posts = Post.search_by_keyword(params[:q]).where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
-        @posts = Post.tagged_with(params[:q]).page(params[:page]).per(10)
+      if params[:id] && params[:q] # 人気の投稿かつ検索時
+        posts = Post.where("NOT user_id IN (#{mute_ids})").tagged_with(params[:q]).page(params[:page]).per(10)
+        @posts = []
+        posts.each do |post|
+          if sum_star(post) >= 3
+            @posts << post
+          end
+        end
+        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
         @tag = params[:q]
-      else
+        @post_category = 0
+
+      elsif params[:id] # 人気の投稿
+        posts = Post.where("NOT user_id IN (#{mute_ids})")
+        @posts = []
+        posts.each do |post|
+          if sum_star(post) >= 3
+            @posts << post
+          end
+        end
+        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
+        @post_category = 1
+
+      elsif params[:q] # タグ検索時
+        # @posts = Post.search_by_keyword(params[:q]).where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
+        @posts = Post.where("NOT user_id IN (#{mute_ids})").tagged_with(params[:q]).page(params[:page]).per(10)
+        @tag = params[:q]
+        @post_category = 2
+      else # 通常のトップページ
         @posts = Post.where("NOT user_id IN (#{mute_ids})").page(params[:page]).per(10)
       # @posts = Post.where("NOT user_id IN (?)", current_user.muting_users.map(&:id))
       # ↑誰もミュートしていないときに@postsがnilになる

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get  '/index', to: 'home#index'
+  get  '/index/:id', to: 'home#index'
   get  '/notification',  to: 'home#notification'
   post '/notification',  to: 'home#create'
   get  '/favorite',  to: 'home#favorite'

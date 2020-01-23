@@ -18,16 +18,18 @@
     </div>
 
     <!--投稿コンテナ中部-->
-    <div class="posts-container-middle">
-      <%= image_tag post.image.url if post.image? %>
-      <%= simple_format(h(post.content),{},sanitize: false) %>
-    </div>
-    <div class="posts-information">
-      <%= simple_format(h(post.information),{},sanitize: false) %>
-    </div>
-    <div class="posts-time">
-      <p><%= time_ago_in_words(post.created_at) %>前</p> <!--time_ago_in_wordsメソッドを使用すると何分前と表示できる-->
-    </div>
+    <%= link_to post do %>
+      <div class="posts-container-middle">
+        <%= image_tag post.image.url if post.image? %>
+        <%= simple_format(h(post.content),{},sanitize: false) %>
+      </div>
+      <div class="posts-information">
+        <%= simple_format(h(post.information),{},sanitize: false) %>
+      </div>
+      <div class="posts-time">
+        <p><%= time_ago_in_words(post.created_at) %>前</p> <!--time_ago_in_wordsメソッドを使用すると何分前と表示できる-->
+      </div>
+    <% end %>
 
     <!--投稿コンテナ下部-->
     <div class="posts-container-bottom">
@@ -38,8 +40,10 @@
         <p>★<%= sum_star(post) %></p>
       </div>
       <div class="comment-box">
-        <%= image_tag "hukidasi.png", alt: "吹き出し" %>
-        <p><%= post.comments.count %></p>
+        <%= link_to post do %>
+          <i class="far fa-comment-dots fa-lg fa-fw"></i>
+        <% end %>
+        <p><%= link_to "#{post.comments.count}", post %></p>
       </div>
       <div id="reibun-box-<%= post.id %>">
         <%= render 'shared/reibun_modal', post: post %>

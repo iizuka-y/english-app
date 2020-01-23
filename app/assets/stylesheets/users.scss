@@ -23,6 +23,11 @@
 }
 
 /*プロフィール部分*/
+.edit-screen {
+  margin: 0 auto;
+  padding: 100px 0 100px 0;
+}
+
 #profile-container {
   background-color: white;
   padding: 20px 0;
@@ -78,7 +83,7 @@
   padding: 20px 15px 40px 15px;
 }
 
-.self_introduction {
+textarea.self_introduction {
   width: 100%;
   border: 1px solid #d8dadf;
   padding: 5px;

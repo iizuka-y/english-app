@@ -23,17 +23,21 @@
     width: 120px;
     border-radius: 2px;
     margin-bottom: 0;
-    border: 0px solid #d8dadf;
+    border: 1px solid black;
     color: black;
     font-weight: 600;
     display: block;
-    margin: 10px 0 0 auto;
+    margin: 0 0 0 auto;
+    padding: 3px 0 3px 0;
   }
 }
 
 #comment-posts {
   border: solid 1px black;
   margin-bottom: 50px;
+  ol {
+    list-style-type: none;
+  }
 }
 
 .comment-container {

@@ -1,8 +1,8 @@
 <% provide(:title, "Edit user") %>
 
-<main class="full-screen">
-  <div class="form">
-    <h2>プロフィール編集</h2>
+<main>
+  <div class="form edit-screen">
+    <h2>ユーザー情報の編集</h2>
     <div class="form-box">
       <div>
         <%= form_for (@user) do |f| %>
@@ -30,9 +30,9 @@
 
           <%= f.submit "変更を送信" %>
         <% end %>
+        <%= link_to "このアカウントを消去", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
       </div>
   　</div>
-    <%= link_to "このアカウントを消去", @user, method: :delete, data: {confirm: "本当に削除してよろしいですか？"} %>
   </div>
 
   <!--画像選択後のトリミング画面用div-->

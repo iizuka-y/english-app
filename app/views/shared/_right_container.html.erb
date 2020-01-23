@@ -21,13 +21,13 @@
 
     <div id="star-ranking-table">
       <div id="ranking-table-top">
-        <p>★獲得数ランキング</p>
+        <i class="fas fa-star fa-fw"></i><p>獲得数ランキング</p>
       </div>
 
       <% i = 1 %>
       <% @ranking_users.each do |ranking_user| %>
         <div class="ranking-table-main">
-          <%= i %>
+          <div class="ranking-number"><%= i %></div>
           <%= link_to image_tag(ranking_user.picture.url), user_path(ranking_user) %>
           <%= link_to ranking_user.name, user_path(ranking_user) %>
           <div class="ranking-star-count"><%= "★#{ranking_user.star_count}" %></div>

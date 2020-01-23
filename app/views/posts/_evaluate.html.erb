@@ -1,44 +1,44 @@
 <% case %>
 <% when post_star(current_user, post) == 1 then %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(1)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star0.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(2)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star0.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star0.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(3)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star0.png", class: "star-e" %>
   <% end %>
 
 <% when post_star(current_user, post) == 2 then %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(1)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(2)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star0.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(3)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star0.png", class: "star-e" %>
   <% end %>
 
 <% when post_star(current_user, post) == 3 then %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(1)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-   html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+   html: { method: :delete, id: "#{post.id}(2)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
   <%= form_for(current_user.evaluations.find_by(post_id: post.id), url: post_evaluations_path(post.id),
-  html: { method: :delete }, remote: true) do |f| %>
-    <%= image_submit_tag "star1.png", class: "star" %>
+  html: { method: :delete, id: "#{post.id}(3)" }, remote: true) do |f| %>
+    <%= image_submit_tag "star1.png", class: "star-e" %>
   <% end %>
 
 <% end %>
