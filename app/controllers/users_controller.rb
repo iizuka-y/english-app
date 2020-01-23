@@ -42,8 +42,10 @@ class UsersController < ApplicationController
   def destroy
     @delete_user = User.find(params[:id])
     @users = []
+    @posts = []
     @delete_user.evaluations.each do |evaluation|
       @users << evaluation.post.user
+      @posts << evaluation.post
     end
     @delete_user.destroy
     flash[:success] = "ユーザーアカウントを削除しました"
@@ -81,6 +83,10 @@ class UsersController < ApplicationController
       @users.each do |user|
         user.star_count = sum_stars(user.posts)
         user.save
+      end
+      @posts.each do |post|
+        post.star_count = sum_star(post)
+        post.save
       end
     end
 

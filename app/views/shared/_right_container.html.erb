@@ -3,8 +3,8 @@
     <!--検索-->
     <%= form_tag(index_path, method: :get) do %>
       <div class="input-group">
-        <%= search_field_tag "q", params[:q], class: "form-control", placeholder: "単語、構文を検索", id: "auto-complete" %>
-
+        <%= search_field_tag "q", params[:q], class: "form-control search", placeholder: "単語、構文を検索", id: "auto-complete" %>
+        <button type="submit" id="sbtn2"><i class="fas fa-search"></i></button>
       </div>
     <% end %>
 

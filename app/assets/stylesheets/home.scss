@@ -103,7 +103,7 @@ main {
 }
 
 .notifications-container-top {
-	img {
+	.user-image img {
 		width: 30px;
     height: 30px;
     border-radius: 50%;
@@ -118,6 +118,17 @@ main {
 	a:visited {
 		color: blue;
 	}
+
+	.star-count {
+		width: 50px;
+	}
+}
+
+.notified-type-evaluation {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0;
 }
 
 .notification-container-bottom {

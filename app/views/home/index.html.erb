@@ -16,15 +16,32 @@
           <% if @post_category == 0 %>
             <%= link_to "新着投稿", index_path(q: @tag) %>
             <p>人気の投稿</p>
+            <%= link_to "ランキング", "/index/ranking?q=#{@tag}" %>
+
           <% elsif @post_category == 1 %>
+            <%= link_to "新着投稿", index_path(q: @tag) %>
+            <%= link_to "人気の投稿", "/index/popular?q=#{@tag}" %>
+            <p>ランキング</p>
+
+          <% elsif @post_category == 2 %>
             <%= link_to "新着投稿", index_path %>
             <p>人気の投稿</p>
-          <% elsif @post_category == 2 %>
+            <%= link_to "ランキング", "/index/ranking" %>
+
+          <% elsif @post_category == 3 %>
+            <%= link_to "新着投稿", index_path %>
+            <%= link_to "人気の投稿", "/index/popular" %>
+            <p>ランキング</p>
+
+          <% elsif @post_category == 4 %>
             <p>新着投稿</p>
             <%= link_to "人気の投稿", "/index/popular?q=#{@tag}" %>
+            <%= link_to "ランキング", "/index/ranking?q=#{@tag}" %>
+
           <% else %>
             <p>新着投稿</p>
             <%= link_to "人気の投稿", "/index/popular" %>
+            <%= link_to "ランキング", "/index/ranking" %>
           <% end %>
         </div>
 
@@ -35,6 +52,16 @@
               <%= render @posts %>
               <%= paginate @posts %>
             </ol>
+          </div>
+        <% else %>
+          <div class="post-none">
+          <% if @post_category == 0 || @post_category == 2 %>
+            <p>条件に相当する投稿はありませんでした</p>
+          <% elsif @post_category == 1 %>
+            <p>人気の投稿はまだありません</p>
+          <% else %>
+            <p>まだ投稿はありません</p>
+          <% end %>
           </div>
         <% end %>
 

@@ -42,6 +42,9 @@ class EvaluationsController < ApplicationController
       user = User.find(@post.user_id)
       user.star_count = sum_stars(user.posts)
       user.save
+
+      @post.star_count = sum_star(@post)
+      @post.save
     end
 
 end

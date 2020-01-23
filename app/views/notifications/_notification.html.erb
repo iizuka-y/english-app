@@ -2,11 +2,20 @@
   <div class="notifications-container">
     <!--お知らせコンテナ上部-->
     <div class="notifications-container-top">
-      <%= link_to image_tag(notification.notified_by.picture.url), user_path(notification.notified_by) %>
+      <%= link_to image_tag(notification.notified_by.picture.url), user_path(notification.notified_by), class: "user-image" %>
       <% if notification.notified_type == "評価" %>
-        <p>
-          <%= notification.notified_by.name %>さんが<%= link_to "あなたの投稿", post_path(notification.post) %>を評価しました。
-        </p?
+        <div class="notified-type-evaluation">
+          <p>
+            <%= notification.notified_by.name %>さんが<%= link_to "あなたの投稿", post_path(notification.post) %>を評価しました。
+          </p>
+          <% if notification.evaluation.star_count == 1 %>
+            <%= image_tag("star-count1.png", class: "star-count") %>
+          <% elsif notification.evaluation.star_count == 2 %>
+            <%= image_tag("star-count2.png", class: "star-count") %>
+          <% else %>
+            <%= image_tag("star-count3.png", class: "star-count") %>
+          <% end %>
+        </div>
       <% else %>
         <p>
           <%= notification.notified_by.name %>さんが<%= link_to "あなたの投稿", post_path(notification.post) %>にコメントをしました"

@@ -73,6 +73,10 @@
             <%= paginate @posts %>
           </ol>
         </div>
+      <% else %>
+        <div class="post-none">
+          <p>登録した例文は見つかりませんでした</p>
+        </div>
       <% end %>
     </div>
 

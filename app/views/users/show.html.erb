@@ -49,6 +49,14 @@
             <%= paginate @posts %>
           </ol>
         </div>
+      <% else %>
+        <div class="post-none">
+        <% if @post_category == 0 %>
+          <p>投稿した例文はありません</p>
+        <% else %>
+          <p>評価した例文はありません</p>
+        <% end %>
+        </div>
       <% end %>
     </div>
 
