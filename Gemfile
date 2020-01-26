@@ -72,6 +72,7 @@ gem 'kaminari'
 gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on'
 gem 'gon'
+gem 'fog-aws'
 
 
 group :production do
