@@ -199,12 +199,14 @@ footer {
 /*例文帳用フォーム*/
 .reibun-form select {
 	width: 90%;
-	margin: 10px 0 35px 0;
+	height: 28px;
+	margin: 15px 0 35px 0;
+	border: solid 1px black;
 }
 
 .reibun-form input {
     width: 90%;
-    border: 1px solid #d8dadf;
+    border: 1px solid black;
     padding: 5px;
     color: #57575f;
     font-size: 16px;
@@ -217,14 +219,15 @@ footer {
 .reibun-form input[type="submit"] {
 	width: 90%;
 	margin: 0 auto;
-	background-color: #F4E921;
+	background-color: #FEBB15;
 	cursor: pointer;
-	border-radius: 2px;
+	border-radius: 5px;
 	display: block;
-	border: 0px solid #d8dadf;
+	border: 2px solid black;
 	color: black;
 	font-weight: 600;
-	margin-top: 35px;
+	margin-top: 25px;
+	margin-bottom: 10px;
 }
 
 .reibun-form .reibun-category-form {
@@ -370,11 +373,21 @@ footer {
 
 .ranking-table-main {
 	padding: 10px;
+	height: 51px;
 	border-top: solid 1px #999999;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.ranking-left {
+		display: flex;
+		align-items: center;
+	}
+
 	.ranking-number {
 		display: inline-block;
 		font-weight: 600;
-		padding-right: 5px;
+		padding-right: 10px;
 	}
 
 	a {
@@ -388,9 +401,18 @@ footer {
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 2px 6px #c1ced7;
-    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
-    詳しくはhttps://html5experts.jp/takazudo/13592*/
+		vertical-align: middle;
     object-fit: cover; /*トリミング*/
+		margin-right: 10px;
+	}
+
+	.ranking-user-name {
+		display: inline-block;
+		max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 	}
 }
 
@@ -410,6 +432,7 @@ footer {
 .post-category {
 	font-weight: 600;
 	margin-bottom: 20px;
+	/*
 	p {
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 		display: inline-block;
@@ -422,6 +445,13 @@ footer {
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
 		color: #999999;
 		padding: 0 15px;
+	}
+	*/
+	img {
+		width: 120px;
+	}
+	img.left-line {
+		border-left: solid 1px #999999;
 	}
 }
 
@@ -450,13 +480,20 @@ footer {
     color: black;
 	}
 
+	.user-name {
+		max-width: 110px;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		line-height: 28px;
+	}
+
 	img {
 		width: 30px;
     height: 30px;
     border-radius: 50%;
     box-shadow: 0 2px 6px #c1ced7;
-    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
-    詳しくはhttps://html5experts.jp/takazudo/13592*/
     object-fit: cover; /*トリミング*/
 		background-color: white;
 	}
@@ -467,13 +504,32 @@ footer {
 	display: flex;
 	a {
 		line-height: 26px;
-		padding: 0 20px;
+		padding: 0 10px;
 		background-color: #4B99EC;
 		font-weight: 600;
 		border-radius: 5px;
 		border: 2px solid black;
 		color: white;
 		margin-left: 10px;
+	}
+
+	.tag3 {
+		max-width: 120px;
+	}
+
+	.tag2 {
+		max-width: 185px;
+	}
+
+	.tag1 {
+		max-width: 380px;
+	}
+
+	.tag {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		font-size: 15px;
 	}
 }
 
@@ -606,7 +662,7 @@ footer {
   width: 450px;
   height: auto;
   text-align: center;
-	border: solid 2px black;
+	border: solid 5px black;
 
 	.modal-btn {
 	}
@@ -676,6 +732,7 @@ nav.pagination {
 	left: -16px;
 	color: white;
 	font-weight: 600;
-	padding: 0 7px;
+	padding: 0 6px;
 	border-radius: 10px;
+	font-size: 13px;
 }

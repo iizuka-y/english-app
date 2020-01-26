@@ -1,7 +1,7 @@
 <main class="full-screen">
   <div class="post-form">
     <h2>新規例文作成</h2>
-    <%= form_for (@post) do |f| %>
+    <%= form_for @post, url: posts_new_path do |f| %>
       <div class="post-form-box">
         <div id="form-box-left">
           <%= render 'shared/error_messages', object: f.object %>

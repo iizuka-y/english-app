@@ -17,7 +17,6 @@
   /*Railsは、無効な内容の送信によって元のページに戻されると、
   field_with_errors内のCSSを変更できる*/
   .form-control {
-    color: red;
     border: 3px solid red !important;
   }
 }
@@ -43,13 +42,13 @@
 }
 
 #user-name {
+  display: flex;
+  align-items: center;
   img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     box-shadow: 0 2px 6px #c1ced7;
-    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
-    詳しくはhttps://html5experts.jp/takazudo/13592*/
     object-fit: cover; /*トリミング*/
   }
 
@@ -57,12 +56,17 @@
     display: inline-block;
     font-weight: 600;
     margin-left: 10px;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
 }
 
-#user-info {
+#user-edit {
   position: relative;
+  width: 200px;
   a {
     position: absolute;
     right: 0;
@@ -74,9 +78,11 @@
     font-weight: 600;
     border: 2px solid black;
   }
-  p {
-    padding-top: 40px;
-  }
+}
+
+#user-info {
+  padding-right: 15px;
+  text-align: right;
 }
 
 #profile-container-bottom {
@@ -93,6 +99,7 @@ textarea.self_introduction {
   border-radius: 10px;
   background-color: white;
   height: 80px;
+  margin-top: 10px;
   margin-bottom: 35px;
 }
 

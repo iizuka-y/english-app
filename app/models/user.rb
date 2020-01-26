@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
   before_save { self.email = email.downcase } #DB保存前に文字を全て小文字にする
-  validates :name,  presence: true, length: { maximum: 20 }
+  validates :name,  presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i #emailの正規表現
   validates :email, presence: true, length: { maximum: 100 },format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } #uniqueness～を使用することで同じemailを登録できなくする
   validates :self_introduction, length: { maximum: 120 }

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/favorite/update', to: 'favorites#update'
   delete '/favorite/destroy', to: 'favorites#delete'
 
-  get 'sessions/new'
+
   get  '/signup',  to: 'users#new'
   post  '/signup',  to: 'users#create'
 
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get :evaluated
     end
   end
+  post '/posts/new',   to: 'posts#create'
 
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy] do
     resource :evaluations, only: [:create, :destroy]

@@ -5,13 +5,23 @@
       <!--名前と画像部分-->
       <div class="posts-user-name">
         <%= link_to image_tag(post.user.picture.url), user_path(post.user) %>
-        <%= link_to post.user.name, user_path(post.user) %>
+        <%= link_to post.user.name, user_path(post.user), class: "user-name" %>
       </div>
 
       <!--キーワード部分-->
       <div class="posts-keyword">
-        <% post.tags.each do |tag| %>
-          <%= link_to tag, index_path(q: tag.name) %>
+        <% if post.tags.count == 3 %>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag, index_path(q: tag.name), class: "tag3 tag" %>
+          <% end %>
+        <% elsif post.tags.count == 2 %>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag, index_path(q: tag.name), class: "tag2 tag" %>
+          <% end %>
+        <% else %>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag, index_path(q: tag.name), class: "tag1 tag" %>
+          <% end %>
         <% end %>
         <%= render 'shared/post_option', post: post %>
       </div>

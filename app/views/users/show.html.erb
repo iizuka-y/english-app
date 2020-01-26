@@ -13,15 +13,16 @@
             <%= image_tag(@user.picture.url) %>
             <p><%= @user.name %></p>
           </div>
-          <div id="user-info">
+          <div id="user-edit">
             <% if current_user?(@user) %>
               <%= link_to "編集", edit_user_path(current_user) %>
             <% elsif current_user.mutes?(@user) %>
               <%= link_to "ミュート済み", user_mutes_path(@user.id), method: :delete, class: "mute" %>
             <% end %>
-            <p>作成した例文・・・<%= @user.posts.count %>　　獲得★数・・・<%= sum_stars(@posts) %></p>
+
           </div>
         </div>
+        <p id="user-info">作成した例文・・・<%= @user.posts.count %>　　獲得★数・・・<%= sum_stars(@posts) %></p>
 
         <!--自己紹介部分-->
         <div id="profile-container-bottom">
@@ -33,11 +34,11 @@
       <!--カテゴリー-->
       <div class="post-category">
         <% if @post_category == 0 %>
-          <p>投稿した例文</p>
-          <%= link_to "評価した例文", evaluated_user_path %>
+          <%= image_tag("your-post1.png", alt: "あなたの投稿") %>
+          <%= link_to image_tag("evaluate-post0.png", alt: "評価した投稿"), evaluated_user_path %>
         <% else %>
-          <%= link_to "投稿した例文", user_path %>
-          <p>評価した例文</p>
+          <%= link_to image_tag("your-post0.png", alt: "あなたの投稿"), user_path %>
+          <%= image_tag("evaluate-post1.png", alt: "評価した投稿") %>
         <% end %>
       </div>
 

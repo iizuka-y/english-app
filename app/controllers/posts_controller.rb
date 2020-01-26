@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     flash[:success] = "投稿を削除しました！"
-    redirect_to request.referrer || root_url #request.referrerメソッドは一つ前のURLを返す
+    redirect_to root_url
   end
 
   def autocomplete

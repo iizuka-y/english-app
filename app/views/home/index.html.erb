@@ -14,34 +14,34 @@
 
         <div class="post-category">
           <% if @post_category == 0 %>
-            <%= link_to "新着投稿", index_path(q: @tag) %>
-            <p>人気の投稿</p>
-            <%= link_to "ランキング", "/index/ranking?q=#{@tag}" %>
+            <%= link_to image_tag("new-post0.png", alt: "新着投稿"), index_path(q: @tag) %>
+            <%= image_tag("popular-post1.png", alt: "人気の投稿") %>
+            <%= link_to image_tag("ranking-post0.png", alt: "ランキング"), "/index/ranking?q=#{@tag}" %>
 
           <% elsif @post_category == 1 %>
-            <%= link_to "新着投稿", index_path(q: @tag) %>
-            <%= link_to "人気の投稿", "/index/popular?q=#{@tag}" %>
-            <p>ランキング</p>
+            <%= link_to image_tag("new-post0.png", alt: "新着投稿"), index_path(q: @tag) %>
+            <%= link_to image_tag("popular-post0.png", alt: "人気の投稿", class: "left-line"), "/index/popular?q=#{@tag}" %>
+            <%= image_tag("ranking-post1.png", alt: "ランキング") %>
 
           <% elsif @post_category == 2 %>
-            <%= link_to "新着投稿", index_path %>
-            <p>人気の投稿</p>
-            <%= link_to "ランキング", "/index/ranking" %>
+            <%= link_to image_tag("new-post0.png", alt: "新着投稿"), index_path %>
+            <%= image_tag("popular-post1.png", alt: "人気の投稿") %>
+            <%= link_to image_tag("ranking-post0.png", alt: "ランキング"), "/index/ranking" %>
 
           <% elsif @post_category == 3 %>
-            <%= link_to "新着投稿", index_path %>
-            <%= link_to "人気の投稿", "/index/popular" %>
-            <p>ランキング</p>
+            <%= link_to image_tag("new-post0.png", alt: "新着投稿"), index_path %>
+            <%= link_to image_tag("popular-post0.png", alt: "人気の投稿", class: "left-line"), "/index/popular" %>
+            <%= image_tag("ranking-post1.png", alt: "ランキング") %>
 
           <% elsif @post_category == 4 %>
-            <p>新着投稿</p>
-            <%= link_to "人気の投稿", "/index/popular?q=#{@tag}" %>
-            <%= link_to "ランキング", "/index/ranking?q=#{@tag}" %>
+            <%= image_tag("new-post1.png", alt: "新着投稿") %>
+            <%= link_to image_tag("popular-post0.png", alt: "人気の投稿"), "/index/popular?q=#{@tag}" %>
+            <%= link_to image_tag("ranking-post0.png", alt: "ランキング", class: "left-line"), "/index/ranking?q=#{@tag}" %>
 
           <% else %>
-            <p>新着投稿</p>
-            <%= link_to "人気の投稿", "/index/popular" %>
-            <%= link_to "ランキング", "/index/ranking" %>
+            <%= image_tag("new-post1.png", alt: "新着投稿") %>
+            <%= link_to image_tag("popular-post0.png", alt: "人気の投稿"), "/index/popular" %>
+            <%= link_to image_tag("ranking-post0.png", alt: "ランキング", class: "left-line"), "/index/ranking" %>
           <% end %>
         </div>
 
