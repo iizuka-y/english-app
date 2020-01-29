@@ -19,9 +19,9 @@
           <%= f.label :password_confirmation, "パスワード(確認用)" %>
           <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+          <%= f.submit "新規登録" %>
           <p><%= link_to "アカウントをお持ちの方はこちら！(ログイン)", login_path %></p>
 
-          <%= f.submit "新規登録" %>
         <% end %>
       </div>
 

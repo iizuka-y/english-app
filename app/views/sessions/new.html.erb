@@ -1,7 +1,7 @@
 <% provide(:title, "Log in") %>
 <main class="full-screen">
   <div class="form">
-    <h2>ログイン</h2>
+    <h2>ログイン画面</h2>
     <div class="form-box">
       <div>
         <%= form_for(:session, url: login_path) do |f| %>
@@ -16,9 +16,9 @@
             <span>ログイン情報を保持する</span>
           <% end %>
 
+          <%= f.submit "ログイン" %>
           <p><%= link_to "アカウントをお持ちでない方はこちら！(新規登録)", signup_path %></p>
 
-          <%= f.submit "ログイン" %>
         <% end %>
       </div>
 

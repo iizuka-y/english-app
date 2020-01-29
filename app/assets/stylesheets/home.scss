@@ -247,9 +247,10 @@ main {
 	font-weight: 100;
 	width: auto;
 	display: none;
+	border: solid 0px;
 }
 
 .reibun-form input[type="submit"].select-submit3 {
-	margin-top: -5px;
+	margin-top: 0px;
 	display: none;
 }

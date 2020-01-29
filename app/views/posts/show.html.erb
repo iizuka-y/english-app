@@ -8,8 +8,9 @@
       <!--投稿部分-->
       <!--カテゴリー-->
       <div class="post-category">
-        <%= link_to "新着例文", index_path %>
-        <%= link_to "人気の例文", "/index/popular" %>
+        <%= link_to image_tag("new-post0.png", alt: "新着投稿"), index_path %>
+        <%= link_to image_tag("popular-post0.png", alt: "人気の投稿", class: "left-line"), "/index/popular" %>
+        <%= link_to image_tag("ranking-post0.png", alt: "ランキング", class: "left-line"), "/index/ranking" %>
       </div>
 
       <!--投稿コンテナ-->
