@@ -6,17 +6,19 @@
       <div>
         <%= form_for(:session, url: login_path) do |f| %>
           <%= f.label :email, "メールアドレス" %>
-          <%= f.email_field :email, class: 'form-control' %>
+          <p class="emailMsg msg"></p>
+          <%= f.email_field :email, class: 'email form-control' %>
 
           <%= f.label :password, "パスワード" %>
-          <%= f.password_field :password, class: 'form-control' %>
+          <p class="passwordMsg msg"></p>
+          <%= f.password_field :password, class: 'password form-control' %>
 
           <%= f.label :remember_me, class: "checkbox" do %>
             <%= f.check_box :remember_me %>
             <span>ログイン情報を保持する</span>
           <% end %>
 
-          <%= f.submit "ログイン" %>
+          <%= f.submit "ログイン", id: "submit" %>
           <p><%= link_to "アカウントをお持ちでない方はこちら！(新規登録)", signup_path %></p>
 
         <% end %>
@@ -27,3 +29,25 @@
 
   </div>
 </main>
+
+<script type="text/javascript">
+  $(document).on('click', '#submit', function(e){
+    $('.msg').empty();
+    $('.form-control').removeClass("error");
+    if($('.email').val() == "" && $('.password').val() == ""){
+      $('.email').addClass("error");
+      $('.password').addClass("error");
+      $('.emailMsg').html("メールアドレスを入力してください");
+      $('.passwordMsg').html("パスワードを入力してください");
+      e.preventDefault();
+    }else if($('.email').val() == ""){
+      $('.emailMsg').html("メールアドレスを入力してください");
+      $('.email').addClass("error");
+      e.preventDefault();
+    }else if($('.password').val() == ""){
+      $('.password').addClass("error");
+      $('.passwordMsg').html("パスワードを入力してください");
+      e.preventDefault();
+    }
+  });
+</script>

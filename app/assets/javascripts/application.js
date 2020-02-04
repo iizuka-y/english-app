@@ -170,6 +170,9 @@ $(document).on('click', '.select-submit', function(e){
   if( $(this).prevAll('.reibun-category-form').val() == "" ){
     $(this).prevAll('.categoryMsg').html("カテゴリーを入力してください");
     e.preventDefault();
+  }else if( $(this).prevAll('.reibun-category-form').val().length > 10 ){
+    $(this).prevAll('.categoryMsg').html("文字数は10文字以内で入力してください");
+    e.preventDefault();
   }else{
     $('.post-modal-wrapper').fadeOut();
     //モーダルのスクロール固定を解除
