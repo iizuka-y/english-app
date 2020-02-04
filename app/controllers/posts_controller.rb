@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :logged_in_user
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :ranking_user, only: [:show]
+  before_action :ranking_user, only: [:show, :evaluated]
   before_action :set_post_tags_to_gon, only: [:edit]
   before_action :set_available_tags_to_gon, only: [:new, :edit]
   after_action :edit_star_count, only: [:destroy]
@@ -54,6 +54,13 @@ class PostsController < ApplicationController
     @available_tags_selected = available_tags.select { |item| item.include?(params[:term]) }
     render json: @available_tags_selected.to_json
   end
+
+  def evaluated
+    @post = Post.find(params[:id])
+    evaluations = @post.evaluations.order(created_at: :desc)
+    @users =  Kaminari.paginate_array(evaluations.map{|evaluation| evaluation.user}).page(params[:page]).per(10)
+  end
+
 
   private
     def post_params

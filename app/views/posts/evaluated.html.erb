@@ -1,0 +1,59 @@
+<main>
+  <div class="main-container">
+
+    <!--レイアウト左側-->
+    <div class="left-container">
+
+      <!--お知らせ部分-->
+      <h2 id="h2-center">評価したユーザー</h2>
+
+      <!--投稿コンテナ-->
+      <% if @users.any? %>
+        <div class="posts">
+          <ol class="post-list jscroll">
+            <% @users.each do |user| %>
+            <li>
+              <div class="evaluations-container">
+                <!--お知らせコンテナ上部-->
+                <div class="evaluations-container-top">
+                  <div class="evaluate_user_name">
+                    <%= link_to image_tag(user.picture.url), user_path(user), class: "user-name" %>
+                    <%= link_to user.name, user_path(user), class: "user-name" %>
+                  </div>
+
+                  <div class="evaluate_count">
+                    <% if post_star(user, @post) == 1 %>
+                      <%= image_tag("star-count1.png", class: "star-count") %>
+                    <% elsif post_star(user, @post) == 2 %>
+                      <%= image_tag("star-count2.png", class: "star-count") %>
+                    <% else %>
+                      <%= image_tag("star-count3.png", class: "star-count") %>
+                    <% end %>
+                  </div>
+
+                </div>
+                <div class="evaluations-container-bottom">
+                  <%= user.self_introduction %>
+                </div>
+              </div>
+            </li>
+
+            <% end %>
+            <%= paginate @users %>
+          </ol>
+        </div>
+      <% else %>
+        <div class="post-none">
+          <p>評価したユーザーはいません</p>
+        </div>
+      <% end %>
+
+    </div>
+
+    <!--レイアウト右側-->
+    <%= render 'shared/right_container' %>
+
+  </div>
+
+
+</main>

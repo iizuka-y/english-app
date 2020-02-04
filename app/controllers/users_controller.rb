@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :logged_in_user, only: [:show, :edit, :update, :destroy, :evaluated]
   before_action :correct_user,   only: [:edit, :update, :destroy]
-  before_action :ranking_user, only: [:show, :evaluated]
+  before_action :ranking_user, only: [:show, :evaluated, :muting, :index]
   after_action :edit_star_count, only: [:destroy]
 
   def show
@@ -59,7 +59,13 @@ class UsersController < ApplicationController
     render 'show'
   end
 
+  def muting
+    @users = current_user.muting_users.page(params[:page]).per(10)
+  end
 
+  def index
+    @users = User.order('star_count DESC').page(params[:page]).per(20)
+  end
 
   private
     def user_params

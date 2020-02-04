@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resource :mutes, only: [:create, :destroy]
     member do
       get :evaluated
+      get :muting
     end
   end
   post '/posts/new',   to: 'posts#create'
@@ -31,6 +32,9 @@ Rails.application.routes.draw do
     resource :comments, only: [:create, :destroy]
     collection do
       get :autocomplete
+    end
+    member do
+      get :evaluated
     end
   end
 

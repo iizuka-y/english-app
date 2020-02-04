@@ -4,11 +4,16 @@
   <div class="form edit-screen">
     <h2>ユーザー情報の編集</h2>
     <div class="form-box">
-      <div>
+      <div class="relative">
         <%= form_for (@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        　<div id="user-picture" onClick="$('#upicon').click()">
-            <%= image_tag(@user.picture.url) %>
+          <div class="user-picture-box">
+          　<div id="user-picture" onClick="$('#upicon').click()">
+              <%= image_tag(@user.picture.url) %>
+            </div>
+            <div class="mute-position">
+              <%= link_to "ミュート中のユーザー一覧", muting_user_path(current_user.id) %>
+            </div>
           </div>
           <%= f.hidden_field :picture_cache %>
           <%= f.file_field :picture, accept: 'image/jpeg,image/git,image/png', class: "image", style: "display:none;", id: "upicon" %>

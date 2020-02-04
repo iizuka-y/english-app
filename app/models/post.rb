@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :evaluations, dependent: :destroy
+  has_many :evaluate_users, through: :evaluations, source: :user
   has_many :comments, dependent: :destroy
   has_many :notifications ,dependent: :destroy
   has_many :favorites, dependent: :destroy

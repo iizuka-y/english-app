@@ -32,6 +32,7 @@
   padding: 20px 0;
   border: 2px solid;
   margin-bottom: 40px;
+  border-radius: 5px;
 }
 
 #profile-container-up {
@@ -105,9 +106,14 @@ textarea.self_introduction {
 
 
 /*ユーザー情報編集*/
+.user-picture-box {
+  height: 110px;
+}
+
 #user-picture {
+  display: inline-block;
   position: relative;
-  top: -30px;
+  left: -15px;
   img {
     width: 80px;
     height: 80px;
@@ -200,4 +206,50 @@ textarea.self_introduction {
   left: 0;
   margin: 0 auto;
   cursor: pointer;
+}
+
+// ユーザー一覧のレイアウト
+.users-container {
+  padding: 15px;
+  border: solid 2px black;
+  background-color: white;
+  margin-bottom: 10px;
+}
+
+.users-container-top {
+  display: flex;
+  justify-content: space-between;
+
+  .user-name {
+    color: black;
+    font-weight: 600;
+  }
+
+  .mute {
+    color: blue;
+  }
+
+  .user-name img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    vertical-align: middle; /*画像を文字(ユーザ名)の高さ中心にもってくる！
+    詳しくはhttps://html5experts.jp/takazudo/13592*/
+    object-fit: cover; /*トリミング*/
+	}
+}
+
+.users-container-bottom {
+  margin-top: 20px;
+}
+
+.relative {
+  position: relative;
+}
+
+.mute-position {
+  position: absolute;
+  top: 0;
+  right: 0;
 }

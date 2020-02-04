@@ -46,9 +46,11 @@
       <div class="star-box" id="star-box-<%= post.id %>">
         <%= render 'shared/star', post: post %>
       </div>
+      <%= link_to evaluated_post_path(post.id) do %>
       <div class="star-count" id="star-count-<%= post.id %>">
-        <p>★<%= sum_star(post) %></p>
+          <p>★<%= sum_star(post) %></p>
       </div>
+      <% end %>
       <div class="comment-box">
         <%= link_to post do %>
           <i class="far fa-comment-dots fa-lg fa-fw"></i>

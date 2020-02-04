@@ -298,12 +298,12 @@ footer {
 .right-container {
 	width: 300px;
 	margin: 0 20px;
-	border-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 #sidebar {
 	position: sticky;
-	top: 70px;
+	top: 30px;
 }
 
 .input-group {
@@ -374,6 +374,7 @@ footer {
 	padding: 8px 0;
 	background-color: #F4E921;
 	color: #d81f1f;
+	border-bottom: solid 1px #999999;
 	p {
 		display: inline-block;
 		font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
@@ -384,7 +385,7 @@ footer {
 .ranking-table-main {
 	padding: 10px;
 	height: 51px;
-	border-top: solid 1px #999999;
+	border-bottom: solid 1px #999999;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -432,6 +433,13 @@ footer {
 	}
 }
 
+#more-users {
+	display: block;
+	width: 80px;
+	margin: 5px auto;
+	color: blue;
+}
+
 .ranking-table-1 {
 	background-color: #F4F2A2;
 }
@@ -449,6 +457,10 @@ footer {
 	line-height: 30px;
 }
 
+.maru-c {
+	margin-top: 5px;
+	color: #999999;
+}
 
 /*投稿のレイアウト*/
 .posts {
@@ -568,6 +580,7 @@ footer {
 	color: black;
 	img {
 		max-width: 500px;
+		max-height: 500px;
 		margin-bottom: 10px;
 	}
 
@@ -622,6 +635,7 @@ footer {
 			background-color: #F4E921;
 			border-radius: 5px;
 			padding: 0 20px;
+			color: black;
 		}
 
 	}
