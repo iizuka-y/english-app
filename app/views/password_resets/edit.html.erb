@@ -1,0 +1,28 @@
+<% provide(:title, 'Password Reset') %>
+
+<main class="full-screen">
+  <div class="form">
+    <h2>パスワードリセット</h2>
+    <div class="form-box">
+      <div>
+        <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %>
+
+          <%= hidden_field_tag :email, @user.email %>
+
+          <%= f.label :password, "パスワード" %>
+          <%= f.password_field :password, class: 'form-control' %>
+
+          <%= f.label :password_confirmation, "パスワード(確認用)" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+          <%= f.submit "パスワードを変更", class: "pw-reset-submit" %>
+
+        <% end %>
+      </div>
+
+
+  　</div>
+
+  </div>
+</main>

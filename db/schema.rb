@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_073727) do
+ActiveRecord::Schema.define(version: 2020_02_05_142934) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2020_01_23_073727) do
     t.integer "star_count", default: 0
     t.text "self_introduction"
     t.string "picture"
+    t.string "reset_digest"
+    t.datetime "reset_sent_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

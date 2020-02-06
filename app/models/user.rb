@@ -17,8 +17,8 @@ class User < ApplicationRecord
   has_many :muted_users, through: :passive_mutes, source: :muting
   # ==========================================================================================
 
-  attr_accessor :remember_token
-  before_save { self.email = email.downcase } #DB保存前に文字を全て小文字にする
+  attr_accessor :remember_token, :reset_token
+  before_save :downcase_email #DB保存前に文字を全て小文字にする
   validates :name,  presence: true, length: { maximum: 15 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i #emailの正規表現
   validates :email, presence: true, length: { maximum: 100 },format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false } #uniqueness～を使用することで同じemailを登録できなくする
@@ -46,9 +46,10 @@ class User < ApplicationRecord
   end
 
   # 引数として受け取った値を記憶トークンに代入して暗号化（記憶ダイジェスト）し、DBにいるユーザーの記憶ダイジェストと比較、同一ならtrueを返す
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 
   # 現在のログイン情報を破棄する
@@ -65,5 +66,28 @@ class User < ApplicationRecord
   def mutes?(user)
     active_mutes.find_by(muted_id: user.id).present?
   end
+
+  # パスワード再設定の属性を設定する
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+  end
+
+  # パスワード再設定のメールを送信する
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  # パスワード再設定の期限が切れている場合はtrueを返す
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+
+  private
+    # メールアドレスをすべて小文字にする
+    def downcase_email
+      self.email = email.downcase
+    end
 
 end

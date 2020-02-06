@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   root 'home#index'
   get  '/index', to: 'home#index'
   get  '/index/:id', to: 'home#index'
@@ -38,5 +40,6 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
 end

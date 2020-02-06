@@ -73,6 +73,7 @@ gem 'jquery-ui-rails'
 gem 'acts-as-taggable-on'
 gem 'gon'
 gem 'fog-aws'
+gem 'mail-iso-2022-jp'
 
 
 group :production do

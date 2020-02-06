@@ -1,0 +1,32 @@
+<% provide(:title, "Forgot password") %>
+
+<main class="full-screen">
+  <div class="form">
+    <h2>パスワードの再設定</h2>
+    <div class="form-box">
+      <div>
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
+          <%= f.label :email, "メールアドレス" %>
+          <p class="emailMsg msg"></p>
+          <%= f.email_field :email, class: 'email form-control' %>
+
+          <%= f.submit "メールを送信", id: "submit" %>
+
+        <% end %>
+      </div>
+  　</div>
+
+  </div>
+</main>
+
+<script type="text/javascript">
+  $(document).on('click', '#submit', function(e){
+    $('.msg').empty();
+    $('.form-control').removeClass("error");
+    if($('.email').val() == ""){
+      $('.emailMsg').html("メールアドレスを入力してください");
+      $('.email').addClass("error");
+      e.preventDefault();
+    }
+  });
+</script>
