@@ -64,13 +64,17 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:keyword, :content, :information, :image, :image_cache, :remove_image, :tag_list)
+      params.require(:post).permit(:content, :information, :image, :image_cache, :remove_image, :tag_list)
     end
 
     # beforeアクション
     def correct_user
-      @post = current_user.posts.find_by(id: params[:id])
-      redirect_to root_url if @post.nil?
+      if current_user.admin?
+        @post = Post.find(params[:id])
+      else
+        @post = current_user.posts.find_by(id: params[:id])
+        redirect_to root_url if @post.nil?
+      end
     end
 
     def ranking_user

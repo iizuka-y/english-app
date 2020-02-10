@@ -6,7 +6,7 @@
         <i class="fa fa-times"></i>
       </div>
       <div class="modal-btn">
-        <% if current_user?(post.user) %>
+        <% if current_user?(post.user) || current_user.admin? %>
           <%= link_to "削除", post, method: :delete, data: { confirm: "削除してもよろしいですか？" }, class: "delete" %>
           <%= link_to "編集", edit_post_path(post), class: "edit" %>
         <% end %>
