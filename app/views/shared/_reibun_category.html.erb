@@ -1,0 +1,6 @@
+<option value="00">新しいカテゴリーを追加</option>
+<% i = 0 %>
+<% categories.each do |category| %>
+  <option value="<%= category %>"><%= category %></option>
+  <% i+= 1 %>
+<% end %>

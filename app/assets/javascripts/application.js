@@ -60,7 +60,7 @@ $(document).on('turbolinks:load', function(){
 
 
   //オートコンプリート
-  var data = ['test', 'have to', 'test2'];
+  //var data = ['test', 'have to', 'test2'];
   $('#auto-complete').autocomplete({
     source: "/posts/autocomplete.json",
     delay: 500,

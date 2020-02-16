@@ -5,12 +5,7 @@
   <div><%= f.hidden_field :post_id, :value => post.id, id: "#{post.id}h" %></div>
   <h3>カテゴリーを選択または追加</h3>
   <select class="category">
-    <option value="00">新しいカテゴリーを追加</option>
-    <% i = 0 %>
-    <% categories.each do |category| %>
-      <option value="<%= category %>"><%= category %></option>
-      <% i+= 1 %>
-    <% end %>
+    <%= render 'shared/reibun_category', categories: categories %>
   </select>
   <%= f.text_field :category, placeholder: "カテゴリーを入力してください", class: 'reibun-category-form form-control', id: "#{post.id}t" %>
   <p class = "categoryMsg"></p>

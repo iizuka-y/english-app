@@ -6,6 +6,7 @@ class FavoritesController < ApplicationController
     @favorite = current_user.favorites.build(favorite_params)
     @post = @favorite.post
     @favorite.save!
+    @categories = current_user.favorites.pluck(:category).uniq
     respond_to do |format|
       format.html { redirect_to request.referer }
       format.js

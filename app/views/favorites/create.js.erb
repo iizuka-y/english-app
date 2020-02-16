@@ -1,2 +1,2 @@
 $('#reibun-box-<%= @post.id %>').html("<%= j(render partial: 'shared/reibun_modal', locals:{post: @post}) %>");
-$('.reibun-form').html("<%= j(render partial: 'shared/reibun_modal_form', locals:{post: @post}) %>");
+$('.category').html("<%= j(render partial: 'shared/reibun_category', locals:{categories: @categories}) %>");
