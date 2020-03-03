@@ -68,7 +68,7 @@ class HomeController < ApplicationController
   end
 
   def favorite
-    @favorites = current_user.favorites
+    @favorites = current_user.favorites.order(created_at: :asc)
     @categories = @favorites.pluck(:category).uniq
     if params[:id]
       @id = params[:id]

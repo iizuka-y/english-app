@@ -1,4 +1,4 @@
-<% categories = current_user.favorites.pluck(:category).uniq %>
+<% categories = current_user.favorites.order(created_at: :asc).pluck(:category).uniq %>
 <% @favorite = Favorite.new %>
 <%= form_for [post, @favorite], html: {id: "#{post.id}", class: "inform_save"}, remote: true do |f| %>
 <%= render 'shared/error_messages', object: f.object %>
